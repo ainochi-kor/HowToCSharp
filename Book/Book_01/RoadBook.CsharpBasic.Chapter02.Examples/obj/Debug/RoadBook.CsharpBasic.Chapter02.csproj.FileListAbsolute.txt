@@ -1,0 +1,12 @@
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\bin\Debug\RoadBook.CsharpBasic.Chapter02.Examples.exe.config
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\bin\Debug\RoadBook.CsharpBasic.Chapter02.Examples.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\bin\Debug\RoadBook.CsharpBasic.Chapter02.Examples.pdb
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\obj\Debug\RoadBook.CsharpBasic.Chapter02.csproj.CoreCompileInputs.cache
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\obj\Debug\RoadBook.CsharpBasic.Chapter02.Examples.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\obj\Debug\RoadBook.CsharpBasic.Chapter02.Examples.pdb
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\obj\Debug\RoadBook.CsharpBasic.Chapter02.csprojAssemblyReference.cache
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\obj\Debug\RoadBook.CsharpBasic.Chapter02.Examples.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\obj\Debug\RoadBook.CsharpBasic.Chapter02.Examples.pdb
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\bin\Debug\RoadBook.CsharpBasic.Chapter02.Examples.exe.config
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\bin\Debug\RoadBook.CsharpBasic.Chapter02.Examples.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter02.Examples\bin\Debug\RoadBook.CsharpBasic.Chapter02.Examples.pdb

@@ -1,0 +1,6 @@
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter01\bin\Debug\RoadBook.CsharpBasic.Chapter01.exe.config
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter01\bin\Debug\RoadBook.CsharpBasic.Chapter01.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter01\bin\Debug\RoadBook.CsharpBasic.Chapter01.pdb
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter01\obj\Debug\RoadBook.CsharpBasic.Chapter01.csproj.CoreCompileInputs.cache
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter01\obj\Debug\RoadBook.CsharpBasic.Chapter01.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharpbyYoutube\HowToCSharpbyBook\Book_01\RoadBook.CsharpBasic.Chapter01\obj\Debug\RoadBook.CsharpBasic.Chapter01.pdb
