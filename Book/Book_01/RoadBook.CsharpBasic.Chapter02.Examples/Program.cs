@@ -10,6 +10,7 @@ namespace RoadBook.CsharpBasic.Chapter02
     {
         static void Main(string[] args)
         {
+            
             Examples.Ex001 ex001 = new Examples.Ex001();
             ex001.Run();
             Console.WriteLine("\n");
@@ -24,6 +25,30 @@ namespace RoadBook.CsharpBasic.Chapter02
             Console.WriteLine("\n");
             Examples.Ex005 ex005 = new Examples.Ex005();
             ex005.Run();
+            Console.WriteLine("\n");
+            Examples.Ex006 ex006 = new Examples.Ex006();
+            ex006.Run();
+            Console.WriteLine("\n");
+            Examples.Ex007 ex007 = new Examples.Ex007();
+            ex007.Run();
+            Console.WriteLine("\n");
+            Examples.Ex008 ex008 = new Examples.Ex008();
+            ex008.Run();
+            Console.WriteLine("\n");
+            Examples.Ex009 ex009 = new Examples.Ex009();
+            ex009.Run();
+            Console.WriteLine("\n");
+            Examples.Ex010 ex010 = new Examples.Ex010();
+            ex010.Run();
+            Console.WriteLine("\n");
+            Examples.Ex011 ex011 = new Examples.Ex011();
+            ex011.Run();
+            Console.WriteLine("\n");
+            Examples.Ex012 ex012 = new Examples.Ex012();
+            ex012.Run();
+            Console.WriteLine("\n");
+
+
         }
     }
 }

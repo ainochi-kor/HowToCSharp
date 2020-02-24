@@ -48,6 +48,13 @@
     <Compile Include="Examples\Ex003.cs" />
     <Compile Include="Examples\Ex004.cs" />
     <Compile Include="Examples\Ex005.cs" />
+    <Compile Include="Examples\Ex006.cs" />
+    <Compile Include="Examples\Ex007.cs" />
+    <Compile Include="Examples\Ex008.cs" />
+    <Compile Include="Examples\Ex009.cs" />
+    <Compile Include="Examples\Ex010.cs" />
+    <Compile Include="Examples\Ex011.cs" />
+    <Compile Include="Examples\Ex012.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

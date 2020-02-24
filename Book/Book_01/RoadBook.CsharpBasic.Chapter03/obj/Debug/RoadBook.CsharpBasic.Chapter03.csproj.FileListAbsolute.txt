@@ -1,0 +1,6 @@
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter03\bin\Debug\RoadBook.CsharpBasic.Chapter03.exe.config
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter03\bin\Debug\RoadBook.CsharpBasic.Chapter03.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter03\bin\Debug\RoadBook.CsharpBasic.Chapter03.pdb
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter03\obj\Debug\RoadBook.CsharpBasic.Chapter03.csprojAssemblyReference.cache
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter03\obj\Debug\RoadBook.CsharpBasic.Chapter03.exe
+C:\Users\ainochi\Desktop\Project\HowToCSharp\Book\Book_01\RoadBook.CsharpBasic.Chapter03\obj\Debug\RoadBook.CsharpBasic.Chapter03.pdb
