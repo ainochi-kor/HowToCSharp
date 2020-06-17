@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String02_Length\bin\Debug\DataType_String02_Length.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String02_Length\bin\Debug\DataType_String02_Length.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String02_Length\bin\Debug\DataType_String02_Length.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String02_Length\obj\Debug\DataType_String02_Length.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String02_Length\obj\Debug\DataType_String02_Length.pdb

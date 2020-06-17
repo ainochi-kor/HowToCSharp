@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataTyep_Char\bin\Debug\DataTyep_Char.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataTyep_Char\bin\Debug\DataTyep_Char.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataTyep_Char\bin\Debug\DataTyep_Char.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataTyep_Char\obj\Debug\DataTyep_Char.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataTyep_Char\obj\Debug\DataTyep_Char.pdb

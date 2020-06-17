@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture2\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture2\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture2\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture2\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture2\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture2\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

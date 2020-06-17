@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String03_Path\bin\Debug\DataType_String03_Path.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String03_Path\bin\Debug\DataType_String03_Path.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String03_Path\bin\Debug\DataType_String03_Path.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String03_Path\obj\Debug\DataType_String03_Path.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_String03_Path\obj\Debug\DataType_String03_Path.pdb
