@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\fileIO01_01\bin\Debug\fileIO01_01.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\fileIO01_01\bin\Debug\fileIO01_01.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\fileIO01_01\bin\Debug\fileIO01_01.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\fileIO01_01\obj\Debug\fileIO01_01.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\fileIO01_01\obj\Debug\fileIO01_01.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\fileIO01_01\obj\Debug\fileIO01_01.pdb

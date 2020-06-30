@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput\bin\Debug\DataType_StandardInput.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput\bin\Debug\DataType_StandardInput.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput\bin\Debug\DataType_StandardInput.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput\obj\Debug\DataType_StandardInput.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput\obj\Debug\DataType_StandardInput.pdb

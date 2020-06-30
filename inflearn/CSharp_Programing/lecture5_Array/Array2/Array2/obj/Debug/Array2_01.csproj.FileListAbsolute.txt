@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array2\Array2\bin\Debug\Array2.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array2\Array2\bin\Debug\Array2.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array2\Array2\bin\Debug\Array2.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array2\Array2\obj\Debug\Array2_01.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array2\Array2\obj\Debug\Array2.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array2\Array2\obj\Debug\Array2.pdb

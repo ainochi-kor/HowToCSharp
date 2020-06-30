@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex007_Static\bin\Debug\ex007_Static.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex007_Static\bin\Debug\ex007_Static.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex007_Static\bin\Debug\ex007_Static.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex007_Static\obj\Debug\ex007_Static.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex007_Static\obj\Debug\ex007_Static.pdb

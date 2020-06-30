@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_03\ex002_NonSerialize\obj\Debug\ex002_NonSerialize.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_03\ex002_NonSerialize\bin\Debug\ex002_NonSerialize.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_03\ex002_NonSerialize\bin\Debug\ex002_NonSerialize.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_03\ex002_NonSerialize\bin\Debug\ex002_NonSerialize.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_03\ex002_NonSerialize\obj\Debug\ex002_NonSerialize.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_03\ex002_NonSerialize\obj\Debug\ex002_NonSerialize.pdb

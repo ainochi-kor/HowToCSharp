@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_04_usingReader\bin\Debug\FileIO01_04_usingReader.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_04_usingReader\bin\Debug\FileIO01_04_usingReader.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_04_usingReader\bin\Debug\FileIO01_04_usingReader.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_04_usingReader\obj\Debug\FileIO01_04_usingReader.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_04_usingReader\obj\Debug\FileIO01_04_usingReader.pdb

@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BasicGrammar_2\obj\Debug\BG2_if_else.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BasicGrammar_2\bin\Debug\BasicGrammar_2.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BasicGrammar_2\bin\Debug\BasicGrammar_2.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BasicGrammar_2\bin\Debug\BasicGrammar_2.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BasicGrammar_2\obj\Debug\BasicGrammar_2.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BasicGrammar_2\obj\Debug\BasicGrammar_2.pdb

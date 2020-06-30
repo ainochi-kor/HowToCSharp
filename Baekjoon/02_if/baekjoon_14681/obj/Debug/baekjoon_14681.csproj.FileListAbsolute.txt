@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_14681\bin\Debug\baekjoon_14681.exe.config
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_14681\bin\Debug\baekjoon_14681.exe
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_14681\bin\Debug\baekjoon_14681.pdb
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_14681\obj\Debug\baekjoon_14681.exe
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_14681\obj\Debug\baekjoon_14681.pdb
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_14681\obj\Debug\baekjoon_14681.csprojAssemblyReference.cache

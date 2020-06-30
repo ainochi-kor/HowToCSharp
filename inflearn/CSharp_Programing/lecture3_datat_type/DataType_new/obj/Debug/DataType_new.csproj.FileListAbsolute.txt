@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_new\bin\Debug\DataType_new.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_new\bin\Debug\DataType_new.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_new\bin\Debug\DataType_new.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_new\obj\Debug\DataType_new.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_new\obj\Debug\DataType_new.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_new\obj\Debug\DataType_new.pdb

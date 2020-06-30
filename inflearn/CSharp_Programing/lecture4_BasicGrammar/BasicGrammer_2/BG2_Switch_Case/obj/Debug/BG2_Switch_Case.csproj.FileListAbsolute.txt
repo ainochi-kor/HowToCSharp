@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_Switch_Case\bin\Debug\BG2_Switch_Case.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_Switch_Case\bin\Debug\BG2_Switch_Case.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_Switch_Case\bin\Debug\BG2_Switch_Case.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_Switch_Case\obj\Debug\BG2_Switch_Case.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_Switch_Case\obj\Debug\BG2_Switch_Case.pdb

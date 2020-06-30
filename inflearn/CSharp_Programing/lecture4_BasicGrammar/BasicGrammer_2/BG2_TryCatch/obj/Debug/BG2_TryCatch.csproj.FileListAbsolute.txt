@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_TryCatch\bin\Debug\BG2_TryCatch.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_TryCatch\bin\Debug\BG2_TryCatch.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_TryCatch\bin\Debug\BG2_TryCatch.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_TryCatch\obj\Debug\BG2_TryCatch.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_TryCatch\obj\Debug\BG2_TryCatch.pdb

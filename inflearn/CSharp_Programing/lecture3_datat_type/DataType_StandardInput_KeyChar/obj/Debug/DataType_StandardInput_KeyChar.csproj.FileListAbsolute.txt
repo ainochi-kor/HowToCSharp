@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput_KeyChar\bin\Debug\DataType_StandardInput_KeyChar.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput_KeyChar\bin\Debug\DataType_StandardInput_KeyChar.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput_KeyChar\bin\Debug\DataType_StandardInput_KeyChar.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput_KeyChar\obj\Debug\DataType_StandardInput_KeyChar.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_StandardInput_KeyChar\obj\Debug\DataType_StandardInput_KeyChar.pdb

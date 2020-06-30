@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_foreach\bin\Debug\BG2_foreach.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_foreach\bin\Debug\BG2_foreach.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_foreach\bin\Debug\BG2_foreach.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_foreach\obj\Debug\BG2_foreach.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammer_2\BG2_foreach\obj\Debug\BG2_foreach.pdb

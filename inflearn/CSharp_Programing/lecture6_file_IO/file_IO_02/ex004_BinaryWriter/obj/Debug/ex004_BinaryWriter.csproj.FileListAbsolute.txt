@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex004_BinaryWriter\bin\Debug\ex004_BinaryWriter.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex004_BinaryWriter\bin\Debug\ex004_BinaryWriter.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex004_BinaryWriter\bin\Debug\ex004_BinaryWriter.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex004_BinaryWriter\obj\Debug\ex004_BinaryWriter.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex004_BinaryWriter\obj\Debug\ex004_BinaryWriter.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex004_BinaryWriter\obj\Debug\ex004_BinaryWriter.pdb

@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_9498\bin\Debug\baekjoon_9498.exe.config
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_9498\bin\Debug\baekjoon_9498.exe
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_9498\bin\Debug\baekjoon_9498.pdb
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_9498\obj\Debug\baekjoon_9498.exe
+D:\Project\HowToCSharp\Baekjoon\02_if\baekjoon_9498\obj\Debug\baekjoon_9498.pdb

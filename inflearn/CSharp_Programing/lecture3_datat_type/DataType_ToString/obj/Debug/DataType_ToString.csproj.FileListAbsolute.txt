@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ToString\bin\Debug\DataType_ToString.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ToString\bin\Debug\DataType_ToString.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ToString\bin\Debug\DataType_ToString.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ToString\obj\Debug\DataType_ToString.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ToString\obj\Debug\DataType_ToString.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ToString\obj\Debug\DataType_ToString.pdb

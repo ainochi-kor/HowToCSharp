@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex003_Split_3\bin\Debug\ex003_Split_3.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex003_Split_3\bin\Debug\ex003_Split_3.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex003_Split_3\bin\Debug\ex003_Split_3.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex003_Split_3\obj\Debug\ex003_Split_3.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex003_Split_3\obj\Debug\ex003_Split_3.pdb

@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_2588\bin\Debug\baekjoon_2588.exe.config
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_2588\bin\Debug\baekjoon_2588.exe
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_2588\bin\Debug\baekjoon_2588.pdb
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_2588\obj\Debug\baekjoon_2588.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_2588\obj\Debug\baekjoon_2588.exe
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_2588\obj\Debug\baekjoon_2588.pdb

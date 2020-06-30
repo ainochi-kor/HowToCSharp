@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_struct\bin\Debug\DataType_struct.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_struct\bin\Debug\DataType_struct.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_struct\bin\Debug\DataType_struct.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_struct\obj\Debug\DataType_struct.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_struct\obj\Debug\DataType_struct.pdb

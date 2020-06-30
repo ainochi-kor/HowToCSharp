@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_05_OnlyStreamReader\bin\Debug\FileIO01_05_OnlyStreamReader.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_05_OnlyStreamReader\bin\Debug\FileIO01_05_OnlyStreamReader.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_05_OnlyStreamReader\bin\Debug\FileIO01_05_OnlyStreamReader.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_05_OnlyStreamReader\obj\Debug\FileIO01_05_OnlyStreamReader.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_01\FileIO01_05_OnlyStreamReader\obj\Debug\FileIO01_05_OnlyStreamReader.pdb

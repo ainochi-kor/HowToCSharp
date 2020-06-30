@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array1\Array1_02\bin\Debug\Array1_02.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array1\Array1_02\bin\Debug\Array1_02.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array1\Array1_02\bin\Debug\Array1_02.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array1\Array1_02\obj\Debug\Array1_02.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture5_Array\Array1\Array1_02\obj\Debug\Array1_02.pdb

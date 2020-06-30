@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ReadLine_ToInt32\bin\Debug\DataType_ReadLine_ToInt32.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ReadLine_ToInt32\bin\Debug\DataType_ReadLine_ToInt32.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ReadLine_ToInt32\bin\Debug\DataType_ReadLine_ToInt32.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ReadLine_ToInt32\obj\Debug\DataType_ReadLine_ToInt32.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_ReadLine_ToInt32\obj\Debug\DataType_ReadLine_ToInt32.pdb

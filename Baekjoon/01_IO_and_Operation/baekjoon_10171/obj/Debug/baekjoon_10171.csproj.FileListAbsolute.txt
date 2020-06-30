@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_10171\bin\Debug\baekjoon_10171.exe.config
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_10171\bin\Debug\baekjoon_10171.exe
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_10171\bin\Debug\baekjoon_10171.pdb
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_10171\obj\Debug\baekjoon_10171.exe
+D:\Project\HowToCSharp\Baekjoon\01_IO_and_Operation\baekjoon_10171\obj\Debug\baekjoon_10171.pdb

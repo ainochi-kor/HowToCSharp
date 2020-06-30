@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_boxing_and_unboxing\bin\Debug\DataType_boxing_and_unboxing.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_boxing_and_unboxing\bin\Debug\DataType_boxing_and_unboxing.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_boxing_and_unboxing\bin\Debug\DataType_boxing_and_unboxing.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_boxing_and_unboxing\obj\Debug\DataType_boxing_and_unboxing.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\DataType_boxing_and_unboxing\obj\Debug\DataType_boxing_and_unboxing.pdb

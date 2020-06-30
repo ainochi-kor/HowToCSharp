@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker02\bin\Debug\Smart_RiceMaker02.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker02\bin\Debug\Smart_RiceMaker02.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker02\bin\Debug\Smart_RiceMaker02.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker02\obj\Debug\Smart_RiceMaker02.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker02\obj\Debug\Smart_RiceMaker02.pdb

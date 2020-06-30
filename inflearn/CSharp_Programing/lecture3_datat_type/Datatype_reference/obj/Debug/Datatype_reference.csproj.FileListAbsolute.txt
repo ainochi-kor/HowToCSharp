@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\Datatype_reference\bin\Debug\Datatype_reference.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\Datatype_reference\bin\Debug\Datatype_reference.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\Datatype_reference\bin\Debug\Datatype_reference.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\Datatype_reference\obj\Debug\Datatype_reference.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture3_datat_type\Datatype_reference\obj\Debug\Datatype_reference.pdb

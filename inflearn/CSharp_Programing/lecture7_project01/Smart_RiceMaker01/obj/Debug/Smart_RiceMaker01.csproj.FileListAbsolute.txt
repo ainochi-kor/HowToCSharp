@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker01\bin\Debug\Smart_RiceMaker01.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker01\bin\Debug\Smart_RiceMaker01.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker01\bin\Debug\Smart_RiceMaker01.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker01\obj\Debug\Smart_RiceMaker01.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker01\obj\Debug\Smart_RiceMaker01.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture7_project01\Smart_RiceMaker01\obj\Debug\Smart_RiceMaker01.pdb

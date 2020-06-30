@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex010_this\bin\Debug\ex010_this.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex010_this\bin\Debug\ex010_this.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex010_this\bin\Debug\ex010_this.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex010_this\obj\Debug\ex010_this.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex010_this\obj\Debug\ex010_this.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex010_this\obj\Debug\ex010_this.pdb

@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_asOperater\bin\Debug\BG1_asOperater.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_asOperater\bin\Debug\BG1_asOperater.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_asOperater\bin\Debug\BG1_asOperater.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_asOperater\obj\Debug\BG1_asOperater.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_asOperater\obj\Debug\BG1_asOperater.pdb

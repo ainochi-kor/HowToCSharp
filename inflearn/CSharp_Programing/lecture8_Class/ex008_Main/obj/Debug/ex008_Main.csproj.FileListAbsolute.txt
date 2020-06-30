@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex008_Main\bin\Debug\ex008_Main.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex008_Main\bin\Debug\ex008_Main.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex008_Main\bin\Debug\ex008_Main.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex008_Main\obj\Debug\ex008_Main.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex008_Main\obj\Debug\ex008_Main.pdb

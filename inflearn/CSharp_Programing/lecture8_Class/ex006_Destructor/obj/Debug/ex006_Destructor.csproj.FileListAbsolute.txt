@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex006_Destructor\bin\Debug\ex006_Destructor.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex006_Destructor\bin\Debug\ex006_Destructor.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex006_Destructor\bin\Debug\ex006_Destructor.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex006_Destructor\obj\Debug\ex006_Destructor.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture8_Class\ex006_Destructor\obj\Debug\ex006_Destructor.pdb

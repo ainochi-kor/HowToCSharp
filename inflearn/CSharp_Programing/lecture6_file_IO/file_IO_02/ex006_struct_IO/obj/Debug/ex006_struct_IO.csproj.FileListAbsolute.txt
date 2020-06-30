@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex006_struct_IO\bin\Debug\ex006_struct_IO.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex006_struct_IO\bin\Debug\ex006_struct_IO.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex006_struct_IO\bin\Debug\ex006_struct_IO.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex006_struct_IO\obj\Debug\ex006_struct_IO.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex006_struct_IO\obj\Debug\ex006_struct_IO.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture6_file_IO\file_IO_02\ex006_struct_IO\obj\Debug\ex006_struct_IO.pdb

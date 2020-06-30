@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BasicGrammar_1\bin\Debug\BasicGrammar_1.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BasicGrammar_1\bin\Debug\BasicGrammar_1.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BasicGrammar_1\bin\Debug\BasicGrammar_1.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BasicGrammar_1\obj\Debug\BG1_Operater.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BasicGrammar_1\obj\Debug\BasicGrammar_1.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BasicGrammar_1\obj\Debug\BasicGrammar_1.pdb

@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_nullOperater\bin\Debug\BG1_nullOperater.exe.config
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_nullOperater\bin\Debug\BG1_nullOperater.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_nullOperater\bin\Debug\BG1_nullOperater.pdb
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_nullOperater\obj\Debug\BG1_nullOperater.exe
+D:\Project\HowToCSharp\inflearn\CSharp_Programing\lecture4_BasicGrammar\BasicGrammar_1\BG1_nullOperater\obj\Debug\BG1_nullOperater.pdb
