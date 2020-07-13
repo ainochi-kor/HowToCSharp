@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergralTypes\IntegerLiterals\bin\Debug\IntegerLiterals.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergralTypes\IntegerLiterals\bin\Debug\IntegerLiterals.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergralTypes\IntegerLiterals\bin\Debug\IntegerLiterals.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergralTypes\IntegerLiterals\obj\Debug\IntegerLiterals.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergralTypes\IntegerLiterals\obj\Debug\IntegerLiterals.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergralTypes\IntegerLiterals\obj\Debug\IntegerLiterals.pdb

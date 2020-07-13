@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Constant\bin\Debug\Constant.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Constant\bin\Debug\Constant.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Constant\bin\Debug\Constant.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Constant\obj\Debug\Constant.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Constant\obj\Debug\Constant.pdb

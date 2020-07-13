@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Decimal\bin\Debug\Decimal.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Decimal\bin\Debug\Decimal.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Decimal\bin\Debug\Decimal.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Decimal\obj\Debug\Decimal.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Decimal\obj\Debug\Decimal.pdb

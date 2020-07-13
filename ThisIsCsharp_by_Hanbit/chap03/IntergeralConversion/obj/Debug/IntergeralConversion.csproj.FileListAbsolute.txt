@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergeralConversion\bin\Debug\IntergeralConversion.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergeralConversion\bin\Debug\IntergeralConversion.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergeralConversion\bin\Debug\IntergeralConversion.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergeralConversion\obj\Debug\IntergeralConversion.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\IntergeralConversion\obj\Debug\IntergeralConversion.pdb

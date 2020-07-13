@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeakJoon_2908", "BeakJoon_2908.csproj", "{D01DA9DA-BADF-463A-9C77-B430648A39A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "String_5622", "..\String_5622\String_5622.csproj", "{D36C29BB-25A9-46E8-AB24-6CCEE5E24CFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D01DA9DA-BADF-463A-9C77-B430648A39A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01DA9DA-BADF-463A-9C77-B430648A39A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01DA9DA-BADF-463A-9C77-B430648A39A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01DA9DA-BADF-463A-9C77-B430648A39A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D36C29BB-25A9-46E8-AB24-6CCEE5E24CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36C29BB-25A9-46E8-AB24-6CCEE5E24CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36C29BB-25A9-46E8-AB24-6CCEE5E24CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36C29BB-25A9-46E8-AB24-6CCEE5E24CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75D51184-EA6E-4980-BEEF-16F17960D7D7}
+	EndGlobalSection
+EndGlobal

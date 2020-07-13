@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Enum\bin\Debug\Enum.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Enum\bin\Debug\Enum.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Enum\bin\Debug\Enum.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Enum\obj\Debug\Enum.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Enum\obj\Debug\Enum.pdb

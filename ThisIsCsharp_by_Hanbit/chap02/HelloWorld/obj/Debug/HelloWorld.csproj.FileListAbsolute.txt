@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\HelloWorld\bin\Debug\HelloWorld.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\HelloWorld\bin\Debug\HelloWorld.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\HelloWorld\bin\Debug\HelloWorld.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\HelloWorld\obj\Debug\HelloWorld.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\HelloWorld\obj\Debug\HelloWorld.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\HelloWorld\obj\Debug\HelloWorld.pdb

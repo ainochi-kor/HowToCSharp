@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap04\Appendix_A\StringSearch\bin\Debug\StringSearch.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap04\Appendix_A\StringSearch\bin\Debug\StringSearch.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap04\Appendix_A\StringSearch\bin\Debug\StringSearch.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap04\Appendix_A\StringSearch\obj\Debug\StringSearch.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap04\Appendix_A\StringSearch\obj\Debug\StringSearch.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap04\Appendix_A\StringSearch\obj\Debug\StringSearch.pdb

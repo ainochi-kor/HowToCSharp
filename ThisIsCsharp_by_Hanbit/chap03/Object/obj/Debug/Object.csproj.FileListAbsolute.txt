@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Object\bin\Debug\Object.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Object\bin\Debug\Object.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Object\bin\Debug\Object.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Object\obj\Debug\Object.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Object\obj\Debug\Object.pdb

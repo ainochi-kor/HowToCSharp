@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\Baekjoon\08_String\BeakJoon_2908\bin\Debug\BeakJoon_2908.exe.config
+D:\Project\HowToCSharp\Baekjoon\08_String\BeakJoon_2908\bin\Debug\BeakJoon_2908.exe
+D:\Project\HowToCSharp\Baekjoon\08_String\BeakJoon_2908\bin\Debug\BeakJoon_2908.pdb
+D:\Project\HowToCSharp\Baekjoon\08_String\BeakJoon_2908\obj\Debug\BeakJoon_2908.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\Baekjoon\08_String\BeakJoon_2908\obj\Debug\BeakJoon_2908.exe
+D:\Project\HowToCSharp\Baekjoon\08_String\BeakJoon_2908\obj\Debug\BeakJoon_2908.pdb

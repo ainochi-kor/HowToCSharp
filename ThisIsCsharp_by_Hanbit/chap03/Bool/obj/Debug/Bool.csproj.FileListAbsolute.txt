@@ -1,0 +1,6 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Bool\bin\Debug\Bool.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Bool\bin\Debug\Bool.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Bool\bin\Debug\Bool.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Bool\obj\Debug\Bool.csprojAssemblyReference.cache
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Bool\obj\Debug\Bool.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\Bool\obj\Debug\Bool.pdb

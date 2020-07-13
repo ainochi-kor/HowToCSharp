@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\problem01\bin\Debug\problem01.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\problem01\bin\Debug\problem01.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\problem01\bin\Debug\problem01.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\problem01\obj\Debug\problem01.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap02\problem01\obj\Debug\problem01.pdb

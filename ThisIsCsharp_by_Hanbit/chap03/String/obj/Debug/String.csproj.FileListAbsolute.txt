@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\String\bin\Debug\String.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\String\bin\Debug\String.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\String\bin\Debug\String.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\String\obj\Debug\String.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\String\obj\Debug\String.pdb

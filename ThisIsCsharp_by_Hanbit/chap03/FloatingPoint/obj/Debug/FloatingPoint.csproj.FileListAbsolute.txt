@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatingPoint\bin\Debug\FloatingPoint.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatingPoint\bin\Debug\FloatingPoint.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatingPoint\bin\Debug\FloatingPoint.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatingPoint\obj\Debug\FloatingPoint.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatingPoint\obj\Debug\FloatingPoint.pdb

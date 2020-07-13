@@ -1,0 +1,5 @@
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatConversion\bin\Debug\FloatConversion.exe.config
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatConversion\bin\Debug\FloatConversion.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatConversion\bin\Debug\FloatConversion.pdb
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatConversion\obj\Debug\FloatConversion.exe
+D:\Project\HowToCSharp\ThisIsCsharp_by_Hanbit\chap03\FloatConversion\obj\Debug\FloatConversion.pdb

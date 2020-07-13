@@ -1,6 +1,0 @@
-D:\Project\HowToCSharp\book_2\chap01\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe.config
-D:\Project\HowToCSharp\book_2\chap01\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe
-D:\Project\HowToCSharp\book_2\chap01\HelloWorld\HelloWorld\bin\Debug\HelloWorld.pdb
-D:\Project\HowToCSharp\book_2\chap01\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojAssemblyReference.cache
-D:\Project\HowToCSharp\book_2\chap01\HelloWorld\HelloWorld\obj\Debug\HelloWorld.exe
-D:\Project\HowToCSharp\book_2\chap01\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb
