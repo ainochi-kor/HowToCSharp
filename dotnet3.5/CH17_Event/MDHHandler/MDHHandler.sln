@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDHHandler", "MDHHandler\MDHHandler.csproj", "{1FE87F6D-B64F-4C71-81AB-1088C4602EBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FE87F6D-B64F-4C71-81AB-1088C4602EBA}.Debug|x86.ActiveCfg = Debug|x86
+		{1FE87F6D-B64F-4C71-81AB-1088C4602EBA}.Debug|x86.Build.0 = Debug|x86
+		{1FE87F6D-B64F-4C71-81AB-1088C4602EBA}.Release|x86.ActiveCfg = Release|x86
+		{1FE87F6D-B64F-4C71-81AB-1088C4602EBA}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

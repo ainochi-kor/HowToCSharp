@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sealed", "Sealed\Sealed.csproj", "{10DA2765-5176-49AC-831D-459E88F67330}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10DA2765-5176-49AC-831D-459E88F67330}.Debug|x86.ActiveCfg = Debug|x86
+		{10DA2765-5176-49AC-831D-459E88F67330}.Debug|x86.Build.0 = Debug|x86
+		{10DA2765-5176-49AC-831D-459E88F67330}.Release|x86.ActiveCfg = Release|x86
+		{10DA2765-5176-49AC-831D-459E88F67330}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
