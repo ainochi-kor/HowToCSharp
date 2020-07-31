@@ -33,7 +33,7 @@ namespace WFP_ServerTest
             sock = socket();
 
             //소켓을 IP엔드포인트(파싱한 데이터)에 연결한다. 포트는 1234
-            sock.Bind(new IPEndPoint(IPAddress.Parse("10.177.55.73"), 1234));
+            sock.Bind(new IPEndPoint(IPAddress.Parse("192.168.56.1"), 1234));
             //최대 대기 수
             sock.Listen(0);
 

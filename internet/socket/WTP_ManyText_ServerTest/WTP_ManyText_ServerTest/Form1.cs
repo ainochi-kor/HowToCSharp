@@ -27,14 +27,16 @@ namespace WTP_ManyText_ServerTest
         {
             conn = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             //소켓을 여는 행위
-            conn.Bind(new IPEndPoint(IPAddress.Parse("10.177.55.73"), 1234));
+            conn.Bind(new IPEndPoint(IPAddress.Parse("192.168.56.1"), 1234));
             conn.Listen(100);
 
-            accept = conn.Accept();
-            conn.Close();
-            MessageBox.Show("연결되었습니다");
+            
+            
             new Thread(() =>
                 {
+                    accept = conn.Accept();
+                    conn.Close();
+                    MessageBox.Show("연결되었습니다");
                     while (true)
                     {
                         try
