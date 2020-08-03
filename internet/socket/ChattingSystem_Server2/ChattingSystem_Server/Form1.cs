@@ -10,18 +10,19 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace ChattingSystem_Server
 {
     public partial class ServerForm : Form
     {
-        private Socket Listener;
-        private Socket Accept;
-        private static string Received_data = null;
-        private static string ClientIP = null;
+        private Socket _connectSocket;
+        private Socket _acceptSocket;
+        private static string _getClientIP = null;
 
         delegate void DeligateGetClientIP(string IPAddress);
         delegate void DeligateButtonChange();
+        delegate void DeligateDisconnectMessgae();
 
         public ServerForm()
         {
@@ -38,99 +39,56 @@ namespace ChattingSystem_Server
 
         private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DisConnect(Accept, Listener);
+            Disconnect(_acceptSocket, _connectSocket);
         }
 
         private void GetClientIP(string ClientEndPoint)
         {
-            ClientIP = Accept.RemoteEndPoint.ToString();
-            ReceivedData_TextBox.Text += ClientIP + "\r\n";
-            ButtonStatusChange();
+            _getClientIP = _acceptSocket.RemoteEndPoint.ToString();
+            ReceivedData_TextBox.Text += _getClientIP + "와 연결되었습니다.\r\n";
         }
-
-        
-        protected void isTextNull(string LocalIPAddree, string Port)
-        {
-            if (LocalIPAddree == null || Port == null)
-                
-        }
-        
-        
+   
         private void StartButton_Click(object sender, EventArgs e)
         {
-            
-            //byte[] bytes = new byte[1024];
-            isTextNull(LocalIpAddress_textBox.Text, Port_textBox.Text);
-          
-            IPAddress ServerIPAddress = IPAddress.Parse(LocalIpAddress_textBox.Text.Trim());
-            IPEndPoint ServerEndPoint = new IPEndPoint(ServerIPAddress, Int32.Parse(Port_textBox.Text));
-            Listener = socket();
-            Listener.Bind(ServerEndPoint);
-            Listener.Listen(10);
-
-            Received_data = null;
-
-            new Thread(() =>
-            {
-                Accept = Listener.Accept();
-                Listener.Close();
-                this.Invoke(new DeligateGetClientIP(GetClientIP), Accept.RemoteEndPoint.ToString());
-                while (true)
+            ButtonStatusChange();
+            ReceivedData_TextBox.Text = "";
+            try
+            {   //Port번호에 숫자가 안들어오면 에러를 일으킬 수 있도록 try/catch문으로 검사와 같이함.
+                Port_textBox.Text = Regex.Replace(Port_textBox.Text, @"[^0-9]", "");
+                if (LocalIpAddress_textBox.Text == "" || Port_textBox.Text == "")
                 {
-                    try
-                    {
-                        byte[] BufferSize = new byte[4];
-                        Accept.Receive(BufferSize, 0, BufferSize.Length, 0);
-                        int RemainSize = BitConverter.ToInt32(BufferSize, 0);
-
-                        MemoryStream RecordMemory = new MemoryStream();
-                        while (RemainSize > 0)
-                        {
-                            byte[] buffer;
-                            if (RemainSize < Accept.ReceiveBufferSize)
-                                buffer = new byte[RemainSize];
-                            else
-                                buffer = new byte[Accept.ReceiveBufferSize];
-
-                            int usedSize = Accept.Receive(buffer, 0, buffer.Length, 0);
-
-                            RemainSize -= usedSize;
-                            RecordMemory.Write(buffer, 0, buffer.Length);
-                        }
-                        RecordMemory.Close();
-                        byte[] RecodeData = RecordMemory.ToArray();
-                        RecordMemory.Dispose();
-                        Invoke((MethodInvoker)delegate
-                        {
-                            ReceivedData_TextBox.Text += Encoding.UTF8.GetString(RecodeData) +"\r\n";
-                        });
-                    }
-                    catch (SocketException se)
-                    {
-                        MessageBox.Show("서버 : DISCONNECTION!\r\n" + se.ToString());
-                        this.Invoke(new DeligateButtonChange(ButtonStatusChange));
-                        Accept.Close();
-                        Accept.Dispose();
-                        break;
-                    }
+                    MessageBox.Show("Local IP Address가 올바르지 않습니다.");
+                    return;
                 }
-            }).Start();
+            }
+            catch
+            {
+                MessageBox.Show("Local IP Address 또는 Port 번호가 올바르지 않습니다.");
+                return;
+            }
+            IPAddress serverIPAddress = IPAddress.Parse(LocalIpAddress_textBox.Text.Trim());
+            IPEndPoint serverEndPoint = new IPEndPoint(serverIPAddress, Int32.Parse(Port_textBox.Text));
+            _connectSocket = SetupSocket();
+            _connectSocket.Bind(serverEndPoint);
+            _connectSocket.Listen(10);
+            
+            PlayThread();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            DisConnect(Accept, Listener);
-            ReceivedData_TextBox.Text += ClientIP + " 와의 연결이 끊어졌습니다.";
-            StartButton.Enabled = true;
-            StopButton.Enabled = false;
+            Disconnect(_acceptSocket, _connectSocket);
         }
 
         private void SendButton_Click(object sender, EventArgs e)
         {
+            if (sendData_textBox.Text == "") return;
+
             try
             {
                 byte[] sendData = Encoding.UTF8.GetBytes(sendData_textBox.Text);
-                Accept.Send(sendData, 0, sendData.Length, 0);
+                _acceptSocket.Send(BitConverter.GetBytes(sendData.Length), 0, 4, 0);
+                _acceptSocket.Send(sendData);
             }
             catch(SocketException socketExcept)
             {
@@ -138,27 +96,61 @@ namespace ChattingSystem_Server
             }
             sendData_textBox.Text = "";
         }
-        /*
-        private Socket socket()
+
+        
+        private void PlayThread()
         {
-            return new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            new Thread(() =>
+            {
+                _acceptSocket = _connectSocket.Accept();
+                _connectSocket.Close();
+                this.Invoke(new DeligateGetClientIP(GetClientIP), _acceptSocket.RemoteEndPoint.ToString());
+                while (true)
+                {   //Client로 부터 수신 받은 메시지의 크기를 받고, 메시지 출력.
+                    try
+                    {
+                        byte[] bufferSize = new byte[4];
+                        _acceptSocket.Receive(bufferSize, 0, bufferSize.Length, 0);
+                        int remainSize = BitConverter.ToInt32(bufferSize, 0);
+
+                        MemoryStream recordMemory = new MemoryStream();
+                        while (remainSize > 0)
+                        {
+                            byte[] buffer;
+                            if (remainSize < _acceptSocket.ReceiveBufferSize)
+                                buffer = new byte[remainSize];
+                            else
+                                buffer = new byte[_acceptSocket.ReceiveBufferSize];
+
+                            int usedSize = _acceptSocket.Receive(buffer, 0, buffer.Length, 0);
+
+                            remainSize -= usedSize;
+                            recordMemory.Write(buffer, 0, buffer.Length);
+                        }
+                        recordMemory.Close();
+                        byte[] recodeData = recordMemory.ToArray();
+                        recordMemory.Dispose();
+                        Invoke((MethodInvoker)delegate
+                        {
+                            ReceivedData_TextBox.Text += Encoding.UTF8.GetString(recodeData) + "\r\n";
+                        });
+                    }
+                    catch (SocketException se)
+                    {
+                        //MessageBox.Show("서버 :\r\n" + se.ToString());
+                        try
+                        {   //Form_Closing 시, 바꿀 데이터가 없어서 오류가 발생함.
+                            this.Invoke(new DeligateButtonChange(ButtonStatusChange));
+                            this.Invoke(new DeligateDisconnectMessgae(DisconnectMessgae));
+                        }
+                        catch { }
+                        _acceptSocket.Close();
+                        _acceptSocket.Dispose();
+                        break;
+                    }
+                }
+            }).Start();
         }
 
-        public static string LocalIPAddress()
-        {
-            IPHostEntry host;
-            string localIP = "";
-            host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (IPAddress ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    localIP = ip.ToString();
-                    break;
-                }
-            }
-            return localIP;
-        }
-         */
     }
 }

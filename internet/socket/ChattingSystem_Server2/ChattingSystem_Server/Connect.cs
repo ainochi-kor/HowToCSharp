@@ -10,7 +10,7 @@ namespace ChattingSystem_Server
     public partial class ServerForm 
     {
 
-        protected Socket socket()
+        Socket SetupSocket()
         {
             return new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
@@ -31,7 +31,7 @@ namespace ChattingSystem_Server
             return LocalIP;
         }
 
-        protected static void DisConnect(Socket AcceptSocket,Socket Listener)
+        protected static void Disconnect(Socket AcceptSocket,Socket Listener)
         {
             if (AcceptSocket != null)
             {
@@ -44,14 +44,14 @@ namespace ChattingSystem_Server
                 Listener.Dispose();
             }
         }
-
         protected void ButtonStatusChange()
         {
             StartButton.Enabled = !(StartButton.Enabled);
             StopButton.Enabled = !(StopButton.Enabled);
         }
-
-
-        //protected conn
+        protected void DisconnectMessgae()
+        {
+            ReceivedData_TextBox.Text += _getClientIP + " 와의 연결이 끊어졌습니다...";
+        }
     }
 }
