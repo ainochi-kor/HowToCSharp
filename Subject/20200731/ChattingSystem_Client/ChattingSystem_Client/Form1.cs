@@ -49,9 +49,11 @@ namespace ChattingSystem_Client
         {
             _connectSocket = SetupSocket();
             try
-            {
+            {   
+                LocalIpAddress_textBox.Text = 
+                    Regex.Replace(LocalIpAddress_textBox.Text, @"[^0-9].[^0-9].[^0-9].[^0-9]", "");
                 Port_textBox.Text = Regex.Replace(Port_textBox.Text, @"[^0-9]", "");
-                if (LocalIpAddress_textBox.Text == "" || Port_textBox.Text == "")
+                if (LocalIpAddress_textBox.Text.Replace(".","") == "" || Port_textBox.Text == "")
                 {
                     MessageBox.Show("Local IP Address가 올바르지 않습니다.");
                     return;
@@ -66,7 +68,6 @@ namespace ChattingSystem_Client
             {
                 MessageBox.Show("Local IP Address 또는 Port 번호가 올바르지 않습니다.");
                 return;
-                //MessageBox.Show("연결을 할 수 없습니다.\r\n" + se.ToString());
             }         
         }
 
@@ -125,12 +126,12 @@ namespace ChattingSystem_Client
                     {
                         MessageBox.Show("서버와의 연결이 종료되었습니다.\r\n");
                         _connectSocket.Close();
-                        try
-                        {
+                        try //사용 중 Windows Form을 닫을 경우, 바꿀 버튼이 없어서 에러가 발생
+                        {   
                             this.Invoke(new DeligateButtonChange(ButtonStatusChange));
                             this.Invoke(new DeligateDisconnectMessgae(DisconnectMessgae));
                         }
-                        catch { }
+                        catch { } 
                         break;
                     }
                 }

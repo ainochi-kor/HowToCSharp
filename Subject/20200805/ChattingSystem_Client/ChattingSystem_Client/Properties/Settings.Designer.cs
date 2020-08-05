@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChattingSystemClient2.Properties
+namespace ChattingSystem_Client.Properties
 {
 
 

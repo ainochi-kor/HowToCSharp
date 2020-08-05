@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ChattingSystemClient2
+namespace ChattingSystem_Client
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace ChattingSystemClient2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Client_Form());
         }
     }
 }

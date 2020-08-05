@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ChattingSystemClient2")]
+[assembly: AssemblyTitle("ChattingSystem_Client")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ChattingSystemClient2")]
+[assembly: AssemblyProduct("ChattingSystem_Client")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1fdc14a8-3b71-48d3-b7ea-532739c4ef9c")]
+[assembly: Guid("cc840f29-462a-4716-b24d-507b024a94f3")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -135,26 +135,22 @@ namespace WFP_ServerTest
                 MessageBox.Show("SocketException Error : " + se.ToString());
                 switch(se.SocketErrorCode)
                 {
-                    case SocketError.ConnectionAborted
+                    case SocketError.ConnectionAborted:
+                    case SocketError.ConnectionReset:
+                        handler.Shutdown(SocketShutdown.Both);
+                        handler.Close();
+                        break;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception 에러 : " + ex.ToString());
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //data라는 변수를 byte형식으로 textBox1의 text를 저장.
-                byte[] data = Encoding.UTF8.GetBytes(textBox1.Text);
-                //연결된 개체에 보내기
-                acc.Send(data, 0, data.Length, 0);
-            }
-            catch(SocketException ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
+            listBox1.Items.Clear();
         }
-
-        
     }
 }

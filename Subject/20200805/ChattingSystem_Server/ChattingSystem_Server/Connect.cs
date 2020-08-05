@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace ChattingSystem_Server
 {
-    public partial class ServerForm 
+    public class ServerEvent 
     {
+        
 
-        Socket SetupSocket()
+        public Socket SetupSocket()
         {
             return new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        protected static string LocalIPAddress()
+        public string LocalIPAddress()
         {
             IPHostEntry host;
             string LocalIP = "";
@@ -31,7 +33,7 @@ namespace ChattingSystem_Server
             return LocalIP;
         }
 
-        protected static void Disconnect(Socket AcceptSocket,Socket Listener)
+        public void Disconnect(Socket AcceptSocket, Socket Listener)
         {
             if (AcceptSocket != null)
             {
@@ -44,14 +46,27 @@ namespace ChattingSystem_Server
                 Listener.Dispose();
             }
         }
-        protected void ButtonStatusChange()
+
+        public void ButtonStatusChange()
         {
-            StartButton.Enabled = !(StartButton.Enabled);
-            StopButton.Enabled = !(StopButton.Enabled);
+            ServerForm server = new ServerForm();
+            try
+            {
+                server.Controls.Find("btnStart", true)[0].Enabled =
+                    !(server.Controls.Find("btnStart", true)[0].Enabled);
+                server.Controls.Find("btnStop", true)[0].Enabled =
+                    !(server.Controls.Find("btnStop", true)[0].Enabled);
+            }
+            catch { }
         }
-        protected void DisconnectMessgae()
+
+        
+        public void DisconnectMessgae()
         {
-            ReceivedData_TextBox.Text += _getClientIP + " 와의 연결이 끊어졌습니다...";
+            ServerForm server = new ServerForm();
+            //server.Controls.Find("tbxReceivedData", true)[0].Text += server.GetClientIP() + " 와의 연결이 끊어졌습니다...";
         }
+
+        
     }
 }

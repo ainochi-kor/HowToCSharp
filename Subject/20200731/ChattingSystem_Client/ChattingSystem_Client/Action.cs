@@ -16,13 +16,13 @@ namespace ChattingSystem_Client
             return new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        protected void ButtonStatusChange()
+        private void ButtonStatusChange()
         {
             ConnectButton.Enabled = !(ConnectButton.Enabled);
             DisconnectButton.Enabled = !(DisconnectButton.Enabled);
         }
 
-        protected void DisconnectMessgae()
+        private void DisconnectMessgae()
         {
             ReceivedData_TextBox.Text += LocalIpAddress_textBox.Text + " 와의 연결이 끊어졌습니다.";
         }

@@ -25,7 +25,7 @@ namespace ChattingSystem_Server
         delegate void DeligateDisconnectMessgae();
 
         public ServerForm()
-        {
+        { 
             InitializeComponent();
         }
 
@@ -42,22 +42,19 @@ namespace ChattingSystem_Server
             Disconnect(_acceptSocket, _connectSocket);
         }
 
-        private void GetClientIP(string ClientEndPoint)
-        {
-            _getClientIP = _acceptSocket.RemoteEndPoint.ToString();
-            ReceivedData_TextBox.Text += _getClientIP + "와 연결되었습니다.\r\n";
-        }
-   
         private void StartButton_Click(object sender, EventArgs e)
         {
-            ButtonStatusChange();
+            //ButtonStatusChange();
             ReceivedData_TextBox.Text = "";
             try
-            {   //Port번호에 숫자가 안들어오면 에러를 일으킬 수 있도록 try/catch문으로 검사와 같이함.
+            {   
+                LocalIpAddress_textBox.Text =
+                    Regex.Replace(LocalIpAddress_textBox.Text, @"[^0-9].[^0-9].[^0-9].[^0-9]", "");
                 Port_textBox.Text = Regex.Replace(Port_textBox.Text, @"[^0-9]", "");
                 if (LocalIpAddress_textBox.Text == "" || Port_textBox.Text == "")
                 {
                     MessageBox.Show("Local IP Address가 올바르지 않습니다.");
+                    //ButtonStatusChange();
                     return;
                 }
             }
@@ -70,7 +67,7 @@ namespace ChattingSystem_Server
             IPEndPoint serverEndPoint = new IPEndPoint(serverIPAddress, Int32.Parse(Port_textBox.Text));
             _connectSocket = SetupSocket();
             _connectSocket.Bind(serverEndPoint);
-            _connectSocket.Listen(10);
+            _connectSocket.Listen(1);
             
             PlayThread();
         }
@@ -102,7 +99,15 @@ namespace ChattingSystem_Server
         {
             new Thread(() =>
             {
-                _acceptSocket = _connectSocket.Accept();
+                try
+                {
+                    _acceptSocket = _connectSocket.Accept();
+                }
+                catch 
+                { 
+                    ShutdownThread();
+                    return; 
+                }
                 _connectSocket.Close();
                 this.Invoke(new DeligateGetClientIP(GetClientIP), _acceptSocket.RemoteEndPoint.ToString());
                 while (true)
@@ -137,15 +142,7 @@ namespace ChattingSystem_Server
                     }
                     catch (SocketException se)
                     {
-                        //MessageBox.Show("서버 :\r\n" + se.ToString());
-                        try
-                        {   //Form_Closing 시, 바꿀 데이터가 없어서 오류가 발생함.
-                            this.Invoke(new DeligateButtonChange(ButtonStatusChange));
-                            this.Invoke(new DeligateDisconnectMessgae(DisconnectMessgae));
-                        }
-                        catch { }
-                        _acceptSocket.Close();
-                        _acceptSocket.Dispose();
+                        ShutdownThread();
                         break;
                     }
                 }
