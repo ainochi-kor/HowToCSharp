@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BAC3F2E5-D0CF-4937-BEDF-3DD4A9117774}</ProjectGuid>
+    <ProjectGuid>{B2C18870-E8BE-4BC0-9687-F891C8B11E7D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChattingSystem_Server</RootNamespace>
-    <AssemblyName>ChattingSystem_Server</AssemblyName>
+    <RootNamespace>MultiThread_Server</RootNamespace>
+    <AssemblyName>MultiThread_Server</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -46,13 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServerEvent.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="handleClientcs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

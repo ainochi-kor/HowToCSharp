@@ -85,7 +85,7 @@ namespace ChattingSystem_Server
                     IPEndPoint serverEndPoint = new IPEndPoint(serverIPAddress, Int32.Parse(tbxPort.Text));
                     _connectSocket = serverEvent.SetupSocket();
                     _connectSocket.Bind(serverEndPoint);
-                    _connectSocket.Listen(1);
+                    _connectSocket.Listen(1000);
 
                     ThreadStart threadDelegate = new ThreadStart(ReceiveDataThread);
                     Thread playThread = new Thread(threadDelegate);

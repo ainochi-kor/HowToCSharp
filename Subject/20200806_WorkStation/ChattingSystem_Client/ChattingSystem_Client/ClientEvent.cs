@@ -21,7 +21,7 @@ namespace ChattingSystem_Client
                 btnDisconnect.Enabled = !(btnDisconnect.Enabled);
 
                 if(btnConnect.Enabled)
-                    tbxReceivedData.Text += tbxLocalIpAddress.Text + " 와의 연결이 끊어졌습니다.";
+                    rtbxReceivedData.Text += tbxLocalIpAddress.Text + " 와의 연결이 끊어졌습니다.";
             }
             catch
             {

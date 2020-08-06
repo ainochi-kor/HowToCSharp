@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -16,9 +17,16 @@ namespace ChattingSystem_Client
 {
     public partial class Client_Form : Form
     {
-        Socket _connectSocket;
-        //ClientEvent _clientEvent = new ClientEvent();
+        //Socket _connectSocket;
+        TcpClient _clientSocket;
+        NetworkStream _stream = default(NetworkStream);
+        string _message = string.Empty;
 
+        public string Message
+        {
+            get { return _message; }
+            set { _message = value; }
+        }
 
         delegate void DeligateButtonChange();
         delegate void DeligateDisconnectMessgae();
@@ -34,59 +42,91 @@ namespace ChattingSystem_Client
             {
                 btnConnect.Enabled = true;
                 btnDisconnect.Enabled = false;
+
+                for (int i = 65; i < 91; i++)
+                {
+                    cbxChannel.Items.Add(Convert.ToChar(i));
+                }
             }
             catch { }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                if(_connectSocket.Connected)
-                {
-                    _connectSocket.Close();
-                }
-            }
-            catch { }//접속 안하고 끄면 오류 생김.
+
             
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            _connectSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //_connectSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             try
             {   
+                _clientSocket = new TcpClient();
                 tbxLocalIpAddress.Text = 
                     Regex.Replace(tbxLocalIpAddress.Text, @"[^0-9].[^0-9].[^0-9].[^0-9]", "");
                 tbxPort.Text = Regex.Replace(tbxPort.Text, @"[^0-9]", "");
+
                 if (tbxLocalIpAddress.Text.Replace(".","") == "" || tbxPort.Text == "")
                 {
                     throw new Exception();
                 }
-                _connectSocket.Connect(new IPEndPoint(
-                    IPAddress.Parse(tbxLocalIpAddress.Text), Int32.Parse(tbxPort.Text)));
-                tbxReceivedData.Text = "서버와 연결되었습니다.\r\n";
+
+                _clientSocket.Connect(tbxLocalIpAddress.Text, Int32.Parse(tbxPort.Text));
+                _stream = _clientSocket.GetStream();
+                Message = "Connected to Chat Server";
+                DisplayText(Message);
+                //rtbxReceivedData.Text = "서버와 연결되었습니다.\r\n";
                 ButtonStatusChange();
 
-                ThreadStart threadDelegate = new ThreadStart(ReceiveDataThread);
-                Thread playThread = new Thread(threadDelegate);
-                playThread.Start();
+                byte[] channelBuffer = Encoding.Unicode.GetBytes(this.cbxChannel.Text + "$");
+                _stream.Write(channelBuffer, 0, channelBuffer.Length);
+                _stream.Flush();
+
+                Thread threadHander = new Thread(GetMessage);
+                threadHander.IsBackground = true;
+                threadHander.Start();
                 
             }
-            catch (Exception except)
+            catch (SocketException se)
             {
                 MessageBox.Show("Local IP Address 또는 Port 번호가 올바르지 않습니다.");
-            }         
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("문제의 내용은 아래와 같습니다.\r\n" + ex.ToString());
+            }
+        }
+
+        private void GetMessage()
+        {
+            try
+            {
+                while (true)
+                {
+                    _stream = _clientSocket.GetStream();
+                    int bufferSize = _clientSocket.ReceiveBufferSize;
+                    byte[] buffer = new byte[bufferSize];
+                    int bytes = _stream.Read(buffer, 0, buffer.Length);
+
+                    string message = Encoding.Unicode.GetString(buffer, 0, bytes);
+                    DisplayText(message);
+                }
+            }
+            catch 
+            {
+                this.Invoke(new DeligateButtonChange(ButtonStatusChange));
+            }
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
             try
             {
-                byte[] sendData = Encoding.UTF8.GetBytes(tbxSendData.Text);
-                _connectSocket.Send(BitConverter.GetBytes(sendData.Length), 0, 4, 0);
-                _connectSocket.Send(sendData);
+                byte[] buffer = Encoding.Unicode.GetBytes(this.tbxSendData.Text + "$");
+                _stream.Write(buffer, 0, buffer.Length);
+                _stream.Flush();
                 tbxSendData.Text = "";
             }
             catch { }
@@ -97,15 +137,21 @@ namespace ChattingSystem_Client
         {
             try
             {
-                if (_connectSocket != null)
-                {
-                    _connectSocket.Close();
-                    _connectSocket.Dispose();
-                }
+                _clientSocket.Close();
+                /*
+                if (_clientSocket.Connected)
+                    MessageBox.Show("We're still connnected");
+                else
+                    MessageBox.Show("We're disconnected");
+                 */
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
+        /*
         public void ReceiveDataThread()
         {
             while (true)
@@ -135,7 +181,7 @@ namespace ChattingSystem_Client
                     recordMemory.Dispose();
                     Invoke((MethodInvoker)delegate
                     {
-                        tbxReceivedData.Text += Encoding.UTF8.GetString(recodeData) + "\r\n";
+                        rtbxReceivedData.Text += Encoding.UTF8.GetString(recodeData) + "\r\n";
                     });
                 }
                 catch (Exception e)
@@ -151,6 +197,19 @@ namespace ChattingSystem_Client
                     break;
                 }
             }
+        } */
+
+        private void DisplayText(string text)
+        {
+            if (rtbxReceivedData.InvokeRequired)
+            {
+                rtbxReceivedData.BeginInvoke(new MethodInvoker(delegate
+                {
+                    rtbxReceivedData.AppendText(text + Environment.NewLine);
+                }));
+            }
+            else
+                rtbxReceivedData.AppendText(text + Environment.NewLine);
         }
     }
 }

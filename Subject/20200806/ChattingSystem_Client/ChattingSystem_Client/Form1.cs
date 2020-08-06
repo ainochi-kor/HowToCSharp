@@ -17,7 +17,7 @@ namespace ChattingSystem_Client
     public partial class Client_Form : Form
     {
         Socket _connectSocket;
-        //ClientEvent _clientEvent = new ClientEvent();
+
 
 
         delegate void DeligateButtonChange();
