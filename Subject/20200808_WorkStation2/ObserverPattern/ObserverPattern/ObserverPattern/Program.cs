@@ -10,12 +10,14 @@ namespace ObserverPattern
         private int flightNo;
         private string origin;
         private int location;
+        private string message;
 
-        internal BaggageInfo(int flight, string from, int carousel)
+        internal BaggageInfo(int flight, string from, int carousel, string msg)
         {
             this.flightNo = flight;
             this.origin = from;
             this.location = carousel;
+            this.message = msg;
         }
 
         public int FlightNumber
@@ -29,6 +31,10 @@ namespace ObserverPattern
         public int Carousel
         {
             get { return location; }
+        }
+        public string MSG
+        {
+            get { return message; }
         }
     }
 
@@ -62,12 +68,12 @@ namespace ObserverPattern
 
         public void BaggageStatus(int flightNo)
         {
-            BaggageStatus(flightNo, String.Empty, 0);
+            BaggageStatus(flightNo, String.Empty, 0, "");
         }
 
-        public void BaggageStatus(int flightNo, string from, int carousel)
+        public void BaggageStatus(int flightNo, string from, int carousel, string msg)
         {
-            var info = new BaggageInfo(flightNo, from, carousel);
+            var info = new BaggageInfo(flightNo, from, carousel,msg);
  
             if(carousel > 0 && ! flights.Contains(info))
             {
@@ -167,7 +173,7 @@ namespace ObserverPattern
             {
                 var flightsToRemove = new List<string>();
                 string flightNo = String.Format("{0,5}", info.FlightNumber);
-
+                
                 foreach (var flightInfo in flightInfos)
                 {
                     if (flightInfo.Substring(21, 5).Equals(flightNo))
@@ -183,7 +189,10 @@ namespace ObserverPattern
             }
             else
             {
-                string flightInfo = String.Format(fmt, info.From, info.FlightNumber, info.Carousel);
+                string flightInfo = String.Format("{0,-20} {1,5} {2,3} {3,10}", info.From, info.FlightNumber, info.Carousel, info.MSG);
+                //Console.WriteLine("flightInfo : " + flightInfo);
+                //Console.WriteLine("info.From : " + info.From);
+                //Console.WriteLine("info.MSG : " + info.MSG);
                 if(! flightInfos.Contains(flightInfo))
                 {
                     flightInfos.Add(flightInfo);
@@ -208,28 +217,21 @@ namespace ObserverPattern
         static void Main(string[] args)
         {
             BaggageHandler provider = new BaggageHandler();
-            ArrivalsMonitor observer1 = new ArrivalsMonitor("BaggageClaimMonitor1");
-            ArrivalsMonitor observer2 = new ArrivalsMonitor("SecurityExit");
+            ArrivalsMonitor observer1 = new ArrivalsMonitor("11111111");
+            ArrivalsMonitor observer2 = new ArrivalsMonitor("222222222");
             
             BaggageHandler provider2 = new BaggageHandler();
-            ArrivalsMonitor observer3 = new ArrivalsMonitor("안녕하세요");
+            ArrivalsMonitor observer3 = new ArrivalsMonitor("33333333");
 
-            provider.BaggageStatus(712, "Detroit", 3);
+            provider.BaggageStatus(712, "Detroit", 3,"dsasddas");
             observer1.Subscribe(provider);
             observer2.Subscribe(provider);
 
-            provider2.BaggageStatus(700, "파스타", 2);
+            provider2.BaggageStatus(700, "파스타", 2, "aaaaaaaaaaaaaaa");
             observer3.Subscribe(provider2);
 
-            provider.BaggageStatus(711, "Detroit2", 2);
-            /*
-            provider.BaggageStatus(712, "Kalamazoo", 3);
-            provider.BaggageStatus(400, "New York-Kennedy", 1);
-            provider.BaggageStatus(712, "Detroit", 3);
-            observer2.Subscribe(provider);
-            provider.BaggageStatus(511, "San Francisco", 2);
-            provider.BaggageStatus(712);
-            */
+            provider.BaggageStatus(711, "Detroit2", 2, "bbbbbbbbbbbbbb");
+
         }
     }
 }

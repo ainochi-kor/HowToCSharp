@@ -101,9 +101,12 @@ namespace MultiThread_Server
                 NetworkStream stream = client.GetStream();
                 byte[] buffer = null;
 
+                IPEndPoint ipPoint = (IPEndPoint)clientSocket.Client.RemoteEndPoint;
+                string clientIP = ipPoint.Address.ToString();
+
                 if(flag)
                 {
-                    buffer = Encoding.Unicode.GetBytes(user_name + " says: " + message);
+                    buffer = Encoding.Unicode.GetBytes( clientIP + ipPoint.Port.ToString()+"/"+ user_name + " says: " + message);
                 }
                 else
                 {
