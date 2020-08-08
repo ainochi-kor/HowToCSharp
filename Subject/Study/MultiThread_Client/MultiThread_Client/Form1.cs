@@ -21,6 +21,9 @@ namespace MultiThread_Client
         NetworkStream stream = default(NetworkStream);
         string message = string.Empty;
 
+        string clientIP = "";
+        string clientPort = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -28,14 +31,14 @@ namespace MultiThread_Client
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            byte[] buffer = Encoding.Unicode.GetBytes(this.tbxMessage.Text + "$");
+            byte[] buffer = Encoding.Unicode.GetBytes(clientIP +":"+clientPort+"/"+this.tbxMessage.Text + "$");
             stream.Write(buffer, 0, buffer.Length);
             stream.Flush();
         }
-
+            
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            clientSocket.Connect("192.168.56.1", 9999);
+            clientSocket.Connect("192.168.0.193", 9999);
             stream = clientSocket.GetStream();
 
             message = "Connected to Chat Server";
@@ -50,6 +53,7 @@ namespace MultiThread_Client
             t_hander.Start();
         }
 
+        bool _isReceivedInfo = false;
         private void GetMessage()
         {
             while(true)
@@ -58,8 +62,14 @@ namespace MultiThread_Client
                 int BUFFERSIZE = clientSocket.ReceiveBufferSize;
                 byte[] buffer = new byte[BUFFERSIZE];
                 int bytes = stream.Read(buffer, 0, buffer.Length);
-
                 string message = Encoding.Unicode.GetString(buffer, 0, bytes);
+                
+                if (!_isReceivedInfo)
+                {
+                    clientIP = message.Split(':')[0];
+                    clientPort = message.Split(':')[1].Split('/')[0];
+                    _isReceivedInfo = !_isReceivedInfo;
+                }
                 DisplayText(message);
             }
         }

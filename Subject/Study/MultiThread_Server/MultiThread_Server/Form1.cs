@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.IO;
+using System.Text;
 using System.Threading;
-using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace MultiThread_Server
 {
@@ -21,7 +15,12 @@ namespace MultiThread_Server
         TcpClient clientSocket = null;
         static int counter = 0;
 
+        IPEndPoint ipPoint;
+        string clientIP;
+
         public Dictionary<TcpClient, string> clientList = new Dictionary<TcpClient, string>();
+
+        public string ClientIP { get => clientIP; set => clientIP = value; }
 
         public ServerForm()
         {
@@ -45,7 +44,7 @@ namespace MultiThread_Server
                 {
                     counter++;
                     clientSocket = server.AcceptTcpClient();
-                    DisplayText(">> Accept connection from client");
+                    
 
                     NetworkStream stream = clientSocket.GetStream();
                     byte[] buffer = new byte[1024];
@@ -53,9 +52,11 @@ namespace MultiThread_Server
                     string user_name = Encoding.Unicode.GetString(buffer, 0, bytes);
                     user_name = user_name.Substring(0, user_name.IndexOf("$"));
 
+                    ipPoint = (IPEndPoint)clientSocket.Client.RemoteEndPoint;
+                    ClientIP = ipPoint.Address.ToString();
                     clientList.Add(clientSocket, user_name);
-
-                    SendMessageAll(user_name + "Joined " , "", false);
+                    DisplayText(">> Accept connection from client : " + ClientIP + ":" + ipPoint.Port + "/" + user_name);
+                    SendMessageAll(ClientIP + ":" + ipPoint.Port + "/" + user_name + " Join" , user_name, false);
 
                     handleClientcs h_client = new handleClientcs();
                     h_client.OnReceived += new handleClientcs.MessageDisplayHandler(OnReceived);
@@ -73,7 +74,6 @@ namespace MultiThread_Server
                     break;
                 }
             }
-
             clientSocket.Close();
             server.Stop();
         }
@@ -101,20 +101,19 @@ namespace MultiThread_Server
                 NetworkStream stream = client.GetStream();
                 byte[] buffer = null;
 
-                IPEndPoint ipPoint = (IPEndPoint)clientSocket.Client.RemoteEndPoint;
-                string clientIP = ipPoint.Address.ToString();
-
-                if(flag)
+                if (user_name == pair.Value)
                 {
-                    buffer = Encoding.Unicode.GetBytes( clientIP + ipPoint.Port.ToString()+"/"+ user_name + " says: " + message);
+                    string sendClient = message.Split('/')[0];
+                    string sendmessage = message.Split('/')[1];
+                    buffer = Encoding.Unicode.GetBytes(sendClient + "/" + user_name + ">" + sendmessage);
+                    stream.Write(buffer, 0, buffer.Length);
+                    stream.Flush();
                 }
                 else
                 {
-                    buffer = Encoding.Unicode.GetBytes(message);
+                    //buffer = null
                 }
-
-                stream.Write(buffer, 0, buffer.Length);
-                stream.Flush();
+                
             }
         }
 
