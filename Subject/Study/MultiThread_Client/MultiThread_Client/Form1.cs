@@ -28,23 +28,30 @@ namespace MultiThread_Client
         {
             InitializeComponent();
         }
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            for(int i = 65 ; i < 91 ;i++)
+            {
+                cbxChannel.Items.Add(Convert.ToChar(i));
+            }
+            
+        }
         private void btnSend_Click(object sender, EventArgs e)
         {
-            byte[] buffer = Encoding.Unicode.GetBytes(clientIP +":"+clientPort+"/"+this.tbxMessage.Text + "$");
+            byte[] buffer = Encoding.Unicode.GetBytes(clientIP + ":" + clientPort + "/" + this.tbxMessage.Text + "$");
             stream.Write(buffer, 0, buffer.Length);
             stream.Flush();
         }
-            
+
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            clientSocket.Connect("192.168.0.193", 9999);
+            clientSocket.Connect("192.168.0.193", 1234);
             stream = clientSocket.GetStream();
 
             message = "Connected to Chat Server";
             DisplayText(message);
 
-            byte[] buffer = Encoding.Unicode.GetBytes(this.cbxChannel.Text +"$");
+            byte[] buffer = Encoding.Unicode.GetBytes(this.cbxChannel.Text + "$");
             stream.Write(buffer, 0, buffer.Length);
             stream.Flush();
 
@@ -56,14 +63,14 @@ namespace MultiThread_Client
         bool _isReceivedInfo = false;
         private void GetMessage()
         {
-            while(true)
+            while (true)
             {
                 stream = clientSocket.GetStream();
                 int BUFFERSIZE = clientSocket.ReceiveBufferSize;
                 byte[] buffer = new byte[BUFFERSIZE];
                 int bytes = stream.Read(buffer, 0, buffer.Length);
                 string message = Encoding.Unicode.GetString(buffer, 0, bytes);
-                
+
                 if (!_isReceivedInfo)
                 {
                     clientIP = message.Split(':')[0];
@@ -79,21 +86,12 @@ namespace MultiThread_Client
             if (richTextBox1.InvokeRequired)
             {
                 richTextBox1.BeginInvoke(new MethodInvoker(delegate
-                    {
-                        richTextBox1.AppendText(text + Environment.NewLine);
-                    }));
+                {
+                    richTextBox1.AppendText(text + Environment.NewLine);
+                }));
             }
             else
                 richTextBox1.AppendText(text + Environment.NewLine);
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            for(int i = 65 ; i < 91 ;i++)
-            {
-                cbxChannel.Items.Add(Convert.ToChar(i));
-            }
-            
-        }
+        }   
     }
 }

@@ -53,9 +53,8 @@ namespace MultiThread_Server
                     user_name = user_name.Substring(0, user_name.IndexOf("$"));
 
                     ipPoint = (IPEndPoint)clientSocket.Client.RemoteEndPoint;
-                    ClientIP = ipPoint.Address.ToString();
                     clientList.Add(clientSocket, user_name);
-                    DisplayText(">> Accept connection from client : " + ClientIP + ":" + ipPoint.Port + "/" + user_name);
+                    DisplayText(">> Accept connection from client : " + ipPoint.Address + ":" + ipPoint.Port + "/" + user_name);
                     SendMessageAll(ClientIP + ":" + ipPoint.Port + "/" + user_name + " Join" , user_name, false);
 
                     handleClientcs h_client = new handleClientcs();
