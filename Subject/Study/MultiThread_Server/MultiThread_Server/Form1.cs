@@ -64,6 +64,7 @@ namespace MultiThread_Server
                 }
                 catch(SocketException se)
                 {
+                    
                     Trace.WriteLine(string.Format("InitSocket - SocketException : {0}", se.Message));
                     break;
                 }

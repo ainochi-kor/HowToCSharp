@@ -23,6 +23,8 @@ namespace ChattingSystem_Client
         string _message = string.Empty;
         string _clientIP = "";
         string _clientPort = "";
+        bool _isReceivedInfo = false;
+
         public string Message
         {
             get { return _message; }
@@ -60,8 +62,6 @@ namespace ChattingSystem_Client
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            //_connectSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
             try
             {   
                 _clientSocket = new TcpClient();
@@ -77,17 +77,13 @@ namespace ChattingSystem_Client
                 _clientSocket.Connect(tbxLocalIpAddress.Text, Int32.Parse(tbxPort.Text));
                 _stream = _clientSocket.GetStream();
 
-                Message = "Connected to Chat Server";
+                Message = "서버와 연결되었습니다.";
                 DisplayText(Message);
-
-                //rtbxReceivedData.Text = "서버와 연결되었습니다.\r\n";
                 ButtonStatusChange();
 
                 byte[] channelBuffer = Encoding.Unicode.GetBytes(this.cbxChannel.Text + "$");
                 _stream.Write(channelBuffer, 0, channelBuffer.Length);
                 _stream.Flush();
-
-                //MessageBox.Show("채널 전송완료");
                 Thread threadHander = new Thread(GetMessage);
                 threadHander.IsBackground = true;
                 threadHander.Start();
@@ -99,10 +95,10 @@ namespace ChattingSystem_Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show("문제의 내용은 아래와 같습니다.\r\n" + ex.ToString());
+                //MessageBox.Show("문제의 내용은 아래와 같습니다.\r\n" + ex.ToString());
             }
         }
-        bool _isReceivedInfo = false;
+        
         private void GetMessage()
         {
             try
@@ -117,9 +113,9 @@ namespace ChattingSystem_Client
 
                     if (!_isReceivedInfo)
                     {
+                        message = message.Replace(">", " 님이 입장하였습니다.");
                         _clientIP = message.Split(':')[0];
                         _clientPort = message.Split(':')[1].Split('/')[0];
-                        //MessageBox.Show(_clientIP + (":") + _clientPort);
                         _isReceivedInfo = !_isReceivedInfo;
                     }
                     DisplayText(message);
@@ -127,7 +123,6 @@ namespace ChattingSystem_Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
                 this.Invoke(new DeligateButtonChange(ButtonStatusChange));
             }
         }
@@ -139,11 +134,9 @@ namespace ChattingSystem_Client
                 byte[] buffer = Encoding.Unicode.GetBytes(_clientIP + ":" + _clientPort + "/" + this.tbxSendData.Text + "$");
                 _stream.Write(buffer, 0, buffer.Length);
                 _stream.Flush();
-
                 tbxSendData.Text = "";
             }
             catch { }
-            
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -151,7 +144,7 @@ namespace ChattingSystem_Client
             try
             {
                 _clientSocket.Close();
-               
+                _isReceivedInfo = false;
             }
             catch (Exception ex)
             {

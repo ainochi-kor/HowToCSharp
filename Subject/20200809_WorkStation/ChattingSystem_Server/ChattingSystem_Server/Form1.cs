@@ -58,8 +58,6 @@ namespace ChattingSystem_Server
         {
             try
             {
-
-
                 tbxLocalIpAddress.Text =
                     Regex.Replace(tbxLocalIpAddress.Text, @"[^0-9].[^0-9].[^0-9].[^0-9]", "");
                 tbxPort.Text = Regex.Replace(tbxPort.Text, @"[^0-9]", "");
@@ -71,15 +69,13 @@ namespace ChattingSystem_Server
                 TcpClient = default(TcpClient);
                 TcpListner.Start();
                 DisplayText(">> server Started");
-
                 while(true)
                 {
                     try
                     {
-                        counter++;
+                        counter++;//무슨 기능이 있는지 잘 모르겠음.
                         TcpClient = TcpListner.AcceptTcpClient();
 
-                        //DisplayText(">> Accept connection from client");
                         this.Invoke(new DeligateGetClientIP(GetClientIP));
 
                         NetworkStream stream = TcpClient.GetStream();
@@ -92,9 +88,7 @@ namespace ChattingSystem_Server
 
                         ipPoint = (IPEndPoint)_tcpClient.Client.RemoteEndPoint;
                         ClientIP = ipPoint.Address.ToString();
-                        //DisplayText(">> Accept connection from client : " +  + ":" + ipPoint.Port + "/" + channel);
-                        SendMessageAll(ClientIP + ":" + ipPoint.Port + "/" + channel + " Join", channel, false);
-                        //SendMessageAll(channel + " Join", channel, false);
+                        SendMessageAll(ClientIP + ":" + ipPoint.Port + "/", channel, false);
 
                         handleClient h_client = new handleClient();
                         h_client.OnReceived += new handleClient.MessageDisplayHandler(OnReceived);
@@ -105,14 +99,12 @@ namespace ChattingSystem_Server
                     catch (SocketException se)
                     {
                         MessageBox.Show(se.ToString());
-                        //Trace.WriteLine(string.Format("InitSocket - SocketException : {0}", se.Message));
-                        break;
+                        throw new Exception();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
-                        //Trace.WriteLine(string.Format("InitSocket - Exception : {0}", ex.Message));
-                        break;
+                        throw new Exception();
                     }
                 }
                 TcpClient.Close();
@@ -121,6 +113,7 @@ namespace ChattingSystem_Server
             catch
             {
                 MessageBox.Show("Local IP Address 또는 Port 번호가 올바르지 않습니다.");
+                this.Invoke(new DeligateButtonChange(ButtonStatusChange));
             }
         }
 
@@ -132,7 +125,9 @@ namespace ChattingSystem_Server
 
         private void OnReceived(string message, string user_name)
         {
-            string displayMessage = "From client: " + user_name + " : " + message;
+            string sendClient = message.Split('/')[0];
+            string sendmessage = message.Split('/')[1];
+            string displayMessage = sendClient + "/" + user_name + ">" + sendmessage;
             DisplayText(displayMessage);
             SendMessageAll(message, user_name, true);
         }
@@ -156,7 +151,13 @@ namespace ChattingSystem_Server
                     buffer = Encoding.Unicode.GetBytes(sendClient + "/" + user_name + ">" + sendmessage);
                     stream.Write(buffer, 0, buffer.Length);
                     stream.Flush();
-                    
+                }
+                else if (user_name == "Server")
+                {
+                    buffer = Encoding.Unicode.GetBytes(user_name + ">" + message);
+                    stream.Write(buffer, 0, buffer.Length);
+                    stream.Flush();
+                    DisplayText(user_name + ">" + message);
                 }
             }
         }
@@ -194,14 +195,15 @@ namespace ChattingSystem_Server
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-           //서버쪽에서 서버쪽으로 보내는 것으로 바꿔야 함.
+            SendMessageAll(tbxSendData.Text, "Server", false);
+            tbxSendData.Text = "";
         }
 
         private void GetClientIP()
         {
             IPEndPoint ipPoint = (IPEndPoint)TcpClient.Client.RemoteEndPoint;
             ClientIP = ipPoint.Address.ToString();
-            rtbxReceivedData.Text += ClientIP + "와 연결되었습니다.\r\n";
+            rtbxReceivedData.Text += ipPoint.Address + ":" + ipPoint.Port + "님이 연결되었습니다.\r\n";
         }
 
         public void ShutdownThread()
@@ -224,10 +226,13 @@ namespace ChattingSystem_Server
                 btnStart.Enabled = !(btnStart.Enabled);
                 btnStop.Enabled = !(btnStop.Enabled);
 
-                if(btnStart.Enabled == true)
+                if(btnStart.Enabled == true && ClientIP != null)
                     rtbxReceivedData.Text += ClientIP + " 와의 연결이 끊어졌습니다...";
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("버튼스테이터스체인지 에러.\r\n" + ex.ToString());  
+            }
         }
 
         public void Disconnect()
