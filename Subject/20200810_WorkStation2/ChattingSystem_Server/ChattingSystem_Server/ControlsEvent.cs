@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace ChattingSystem_Server
 
         string _sendClient = "";
         string _sendmessage = "";
+        ArrayList _ClientInfoList = new ArrayList();
 
         public string SendClient
         {
@@ -44,34 +46,24 @@ namespace ChattingSystem_Server
             }
         }
 
-        public void ShutdownThread()
-        {
-            try
-            {   //Form_Closing 시, 바꿀 데이터가 없어서 오류가 발생함.
-                Thread thread = Thread.CurrentThread;
-                thread.Interrupt();
-                TcpClient.Close();
-                Thread.Sleep(1000); //Dispose하는 시간이 필요하여 1초정도 메인 쓰레드를 쉬어줌.
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("ShutdownThread : \r\n" + ex.ToString());
-            }
-        }
-
         public void ButtonStatusChange()
         {
             try
             {
                 btnStart.Enabled = !(btnStart.Enabled);
                 btnStop.Enabled = !(btnStop.Enabled);
-
+                
+                        
                 if (btnStart.Enabled == true && ClientIP != null)
-                    rtbxReceivedData.Text += ClientIP + " 와의 연결이 끊어졌습니다...";
+                {
+                    foreach(string clientInfo in _ClientInfoList )
+                        rtbxReceivedData.Text += clientInfo + " 와의 연결이 끊어졌습니다.\r\n";
+                    _ClientInfoList.Clear();
+                }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("버튼스테이터스체인지 에러.\r\n" + ex.ToString());
+                MessageBox.Show("버튼스테이터스체인지 에러.\r\n" + ex.ToString());
             }
         }
 
@@ -103,6 +95,7 @@ namespace ChattingSystem_Server
                 tbxPort.Text = Regex.Replace(tbxPort.Text, @"[^0-9]", "");
                 if (tbxLocalIpAddress.Text == "" || tbxPort.Text == "")
                 {
+                    MessageBox.Show("Local IP Address 또는 Port 번호가 올바르지 않습니다.");
                     throw new Exception();
                 }
                 TcpListner = new TcpListener(IPAddress.Parse(tbxLocalIpAddress.Text.Trim()), Int32.Parse(tbxPort.Text));
@@ -122,12 +115,12 @@ namespace ChattingSystem_Server
                         int bytes = stream.Read(buffer, 0, buffer.Length);
                         string channel = Encoding.Unicode.GetString(buffer, 0, bytes);
                         channel = channel.Split('$')[0];
-                        //channel = channel.Substring(0, channel.IndexOf("$"));
 
                         clientList.Add(TcpClient, channel);
 
                         ipPoint = (IPEndPoint)_tcpClient.Client.RemoteEndPoint;
                         ClientIP = ipPoint.Address.ToString();
+                        _ClientInfoList.Add(ClientIP + ":" + ipPoint.Port);
                         SendMessageAll(ClientIP + ":" + ipPoint.Port + "/", channel, false);
 
                         HandleClient handle = new HandleClient();
@@ -138,31 +131,32 @@ namespace ChattingSystem_Server
                     }
                     catch (Exception ex)
                     {
-                        TcpClient.Close();
-                        TcpListner.Stop();
-                        MessageBox.Show(ex.ToString());
-                        throw new Exception();
+                        throw new SocketException();
                     }
                 }
                 
             }
-            catch
+            catch(SocketException ex)
             {
-                MessageBox.Show("Local IP Address 또는 Port 번호가 올바르지 않습니다.");
                 this.Invoke(new DeligateDisconnect(Disconnect));
+            }
+            catch(Exception ex)
+            { }
+            finally
+            {
                 this.Invoke(new DeligateButtonChange(ButtonStatusChange));
             }
         }
 
-        private void OnReceived(string message, string user_name)
+        private void OnReceived(string message, string channel)
         {
             try
             {
                 SendClient = message.Split('/')[0];
                 Sendmessage = message.Substring(message.IndexOf("/") + 1);
-                string displayMessage = SendClient + "/" + user_name + ">" + Sendmessage;
+                string displayMessage = SendClient + "/" + channel + ">" + Sendmessage;
                 DisplayText(displayMessage);
-                SendMessageAll(message, user_name, true);
+                SendMessageAll(message, channel, true);
             }
             catch(Exception ex)
             {
@@ -185,33 +179,31 @@ namespace ChattingSystem_Server
 
 
 
-        public void SendMessageAll(string message, string user_name, bool flag)
+        public void SendMessageAll(string message, string channel, bool flag)
         {
             try
             {
                 foreach (var pair in clientList)
                 {
-                    Trace.WriteLine(string.Format("tcpclient : {0} user_name : {1}", pair.Key, pair.Value));
 
                     TcpClient client = pair.Key as TcpClient;
                     NetworkStream stream = client.GetStream();
                     byte[] buffer = null;
 
-                    if (user_name == pair.Value)
+                    if (channel == pair.Value)
                     {
                         SendClient = message.Split('/')[0];
                         Sendmessage = message.Substring(message.IndexOf("/") + 1);
-                        //string sendmessage = message.Split('/')[1];
-                        buffer = Encoding.Unicode.GetBytes(SendClient + "/" + user_name + ">" + Sendmessage);
+                        buffer = Encoding.Unicode.GetBytes(SendClient + "/" + channel + ">" + Sendmessage);
                         stream.Write(buffer, 0, buffer.Length);
                         stream.Flush();
                     }
-                    else if (user_name == "Server")
+                    else if (channel == "Server")
                     {
-                        buffer = Encoding.Unicode.GetBytes(user_name + ">" + message);
+                        buffer = Encoding.Unicode.GetBytes(channel + ">" + message);
                         stream.Write(buffer, 0, buffer.Length);
                         stream.Flush();
-                        DisplayText(user_name + ">" + message);
+                        DisplayText(channel + ">" + message);
                     }
                 }
             }

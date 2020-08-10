@@ -18,7 +18,7 @@ namespace ChattingSystem_Server
 {
     public partial class ServerForm : Form
     {
-        ServerEvent serverEvent = new ServerEvent();
+        //;
 
         private TcpListener _tcpListner = null;
         private TcpClient _tcpClient = null;
@@ -46,8 +46,6 @@ namespace ChattingSystem_Server
         delegate void DeligateGetClientIP();
         delegate void DeligateButtonChange();
         delegate void DeligateDisconnect();
-        //delegate void DeligateEndThread();
-
 
         public ServerForm()
         {
@@ -58,7 +56,7 @@ namespace ChattingSystem_Server
         {
             try
             {
-                //폼 로드시, 현재 컴퓨터의 LocalIPAddress를 TextBox에 출력합니다.
+                ServerEvent serverEvent = new ServerEvent();
                 tbxLocalIpAddress.Text = serverEvent.LocalIPAddress();
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
