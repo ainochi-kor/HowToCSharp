@@ -13,10 +13,9 @@ using System.Threading;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
-
 namespace ChattingSystem_Server
 {
-    /*
+    
     public partial class ServerForm : Form
     {
         ServerEvent serverEvent = new ServerEvent();
@@ -57,10 +56,17 @@ namespace ChattingSystem_Server
 
         public void ServerForm_Load(object sender, EventArgs e)
         {
-            //폼 로드시, 현재 컴퓨터의 LocalIPAddress를 TextBox에 출력합니다.
-            tbxLocalIpAddress.Text = serverEvent.LocalIPAddress();
-            btnStart.Enabled = true;
-            btnStop.Enabled = false;
+            try
+            {
+                //폼 로드시, 현재 컴퓨터의 LocalIPAddress를 TextBox에 출력합니다.
+                tbxLocalIpAddress.Text = serverEvent.LocalIPAddress();
+                btnStart.Enabled = true;
+                btnStop.Enabled = false;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("btnStart_Click : \r\n" + ex.ToString());  
+            }
         }
 
         private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -70,15 +76,22 @@ namespace ChattingSystem_Server
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            bool isConnect = true;
-            rtbxReceivedData.Text = "";
+            try
+            {
+                bool isConnect = true;
+                rtbxReceivedData.Text = "";
 
-            Thread ServerThread = new Thread(InitSocket);
-            ServerThread.IsBackground = true;
-            ServerThread.Start();
-            
-            if (isConnect == true)
-               ButtonStatusChange();
+                Thread ServerThread = new Thread(InitSocket);
+                ServerThread.IsBackground = true;
+                ServerThread.Start();
+
+                if (isConnect == true)
+                    ButtonStatusChange();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("btnStart_Click : \r\n" + ex.ToString());  
+            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -88,15 +101,29 @@ namespace ChattingSystem_Server
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            SendMessageAll(tbxSendData.Text, "Server", false);
-            tbxSendData.Text = "";
+            try
+            {
+                SendMessageAll(tbxSendData.Text, "Server", false);
+                tbxSendData.Text = "";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("btnSend_Click : \r\n" + ex.ToString());  
+            }
         }
 
-        private void GetClientIP()
+        public void GetClientIP()
         {
-            IPEndPoint ipPoint = (IPEndPoint)TcpClient.Client.RemoteEndPoint;
-            ClientIP = ipPoint.Address.ToString();
-            rtbxReceivedData.Text += ipPoint.Address + ":" + ipPoint.Port + "님이 연결되었습니다.\r\n";
+            try
+            {
+                IPEndPoint ipPoint = (IPEndPoint)TcpClient.Client.RemoteEndPoint;
+                ClientIP = ipPoint.Address.ToString();
+                rtbxReceivedData.Text += ipPoint.Address + ":" + ipPoint.Port + "님이 연결되었습니다.\r\n";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("GetClientIP : \r\n" + ex.ToString());  
+            }
         }
 
         public void ShutdownThread()
@@ -108,8 +135,10 @@ namespace ChattingSystem_Server
                 TcpClient.Close();
                 Thread.Sleep(1000); //Dispose하는 시간이 필요하여 1초정도 메인 쓰레드를 쉬어줌.
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ShutdownThread : \r\n" + ex.ToString());  
+            }
         }
 
         public void ButtonStatusChange()
@@ -124,19 +153,26 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex)
             {
-                MessageBox.Show("버튼스테이터스체인지 에러.\r\n" + ex.ToString());  
+                MessageBox.Show("ButtonStatusChange : \r\n" + ex.ToString());  
             }
         }
 
         public void Disconnect()
         {
-            if (TcpClient != null)
+            try
             {
-                TcpClient.Close();
+                if (TcpClient != null)
+                {
+                    TcpClient.Close();
+                }
+                if (TcpListner != null)
+                {
+                    TcpListner.Stop();
+                }
             }
-            if (TcpListner != null)
+            catch (Exception ex)
             {
-                TcpListner.Stop();
+                MessageBox.Show("Disconnect : \r\n" + ex.ToString()); 
             }
         }
 
@@ -176,9 +212,9 @@ namespace ChattingSystem_Server
                         ClientIP = ipPoint.Address.ToString();
                         SendMessageAll(ClientIP + ":" + ipPoint.Port + "/", channel, false);
 
-                        handleClient h_client = new handleClient();
-                        h_client.OnReceived += new handleClient.MessageDisplayHandler(OnReceived);
-                        h_client.OnDisconnected += new handleClient.DisconnectedHandler(HandlerClientsOnDisconnected);
+                        HandleClient h_client = new HandleClient();
+                        h_client.OnReceived += new HandleClient.MessageDisplayHandler(OnReceived);
+                        h_client.OnDisconnected += new HandleClient.DisconnectedHandler(HandlerClientsOnDisconnected);
                         h_client.startClient(TcpClient, clientList);
 
                     }
@@ -190,7 +226,7 @@ namespace ChattingSystem_Server
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
-                        throw new Exception();
+                        throw new Exception("");
                     }
                 }
                 TcpClient.Close();
@@ -203,64 +239,86 @@ namespace ChattingSystem_Server
             }
         }
 
-        private void OnReceived(string message, string user_name)
+        public void OnReceived(string message, string user_name)
         {
+            ServerForm server = new ServerForm();
+
             string sendClient = message.Split('/')[0];
             string sendmessage = message.Split('/')[1];
             string displayMessage = sendClient + "/" + user_name + ">" + sendmessage;
-            DisplayText(displayMessage);
-            SendMessageAll(message, user_name, true);
+            server.DisplayText(displayMessage);
+            server.SendMessageAll(message, user_name, true);
         }
 
         void HandlerClientsOnDisconnected(TcpClient clientScoket)
         {
-            if (clientList.ContainsKey(clientScoket))
-                clientList.Remove(clientScoket);
+            try
+            {
+                if (clientList.ContainsKey(clientScoket))
+                    clientList.Remove(clientScoket);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("HandlerClientsOnDisconnected : \r\n" + ex.ToString());
+            }
         }
-
-        
 
         public void SendMessageAll(string message, string user_name, bool flag)
         {
-            foreach (var pair in clientList)
+            MessageBox.Show("Lsasd.");
+            try
             {
-                Trace.WriteLine(string.Format("tcpclient : {0} user_name : {1}", pair.Key, pair.Value));
-
-                TcpClient client = pair.Key as TcpClient;
-                NetworkStream stream = client.GetStream();
-                byte[] buffer = null;
-
-                //MessageBox.Show(message);
-                if (user_name == pair.Value)
+                foreach (var pair in clientList)
                 {
-                    //MessageBox.Show("in");
-                    string sendClient = message.Split('/')[0];
-                    string sendmessage = message.Split('/')[1];
-                    buffer = Encoding.Unicode.GetBytes(sendClient + "/" + user_name + ">" + sendmessage);
-                    stream.Write(buffer, 0, buffer.Length);
-                    stream.Flush();
+                    Trace.WriteLine(string.Format("tcpclient : {0} user_name : {1}", pair.Key, pair.Value));
+
+                    TcpClient client = pair.Key as TcpClient;
+                    NetworkStream stream = client.GetStream();
+                    byte[] buffer = null;
+
+                    //MessageBox.Show("message \r\n" + message);
+                    if (user_name == pair.Value)
+                    {
+                        string sendClient = message.Split('/')[0];
+                        string sendmessage = message.Split('/')[1];
+                        buffer = Encoding.Unicode.GetBytes(sendClient + "/" + user_name + ">" + sendmessage);
+                        stream.Write(buffer, 0, buffer.Length);
+                        stream.Flush();
+                    }
+                    else if (user_name == "Server")
+                    {
+                        buffer = Encoding.Unicode.GetBytes(user_name + ">" + message);
+                        stream.Write(buffer, 0, buffer.Length);
+                        stream.Flush();
+                        DisplayText(user_name + ">" + message);
+                    }
                 }
-                else if (user_name == "Server")
-                {
-                    buffer = Encoding.Unicode.GetBytes(user_name + ">" + message);
-                    stream.Write(buffer, 0, buffer.Length);
-                    stream.Flush();
-                    DisplayText(user_name + ">" + message);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("[서버]에서 송신 할 수 없습니다. \r\n" + ex.ToString());
             }
         }
 
-        private void DisplayText(string text)
+        public void DisplayText(string text)
         {
-            if (rtbxReceivedData.InvokeRequired)
+            try
             {
-                rtbxReceivedData.BeginInvoke(new MethodInvoker(delegate
+                if (rtbxReceivedData.InvokeRequired)
                 {
+                    rtbxReceivedData.BeginInvoke(new MethodInvoker(delegate
+                    {
+                        rtbxReceivedData.AppendText(text + Environment.NewLine);
+                    }));
+                }
+                else
                     rtbxReceivedData.AppendText(text + Environment.NewLine);
-                }));
             }
-            else
-                rtbxReceivedData.AppendText(text + Environment.NewLine);
+            catch(Exception ex)
+            {
+                MessageBox.Show("DisplayText : \r\n" + ex.ToString());
+            }          
         }
+            
     }
 }

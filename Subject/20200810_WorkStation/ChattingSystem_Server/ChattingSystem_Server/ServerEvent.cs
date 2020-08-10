@@ -26,7 +26,5 @@ namespace ChattingSystem_Server
             }
             return LocalIP;
         }
-
-        
     }
 }

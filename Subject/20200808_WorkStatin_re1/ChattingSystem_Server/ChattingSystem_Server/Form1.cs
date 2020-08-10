@@ -20,6 +20,7 @@ namespace ChattingSystem_Server
     {
         ServerEvent serverEvent = new ServerEvent();
         ClientInfo clientInfo;
+        ClientHandler[] Room;
 
         private TcpListener _tcpListner = null;
         private TcpClient _tcpClient = null;
@@ -52,7 +53,7 @@ namespace ChattingSystem_Server
             InitializeComponent();
         }
 
-        ClientHandler[] Room;
+        
         private void ChattingChannel()
         {
             Room = new ClientHandler[26];
