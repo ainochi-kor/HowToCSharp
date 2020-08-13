@@ -32,7 +32,7 @@ namespace ChattingSystem_Server
         private IPEndPoint _ipPoint;
         private ArrayList _clientInfoList = new ArrayList();
         private Dictionary<TcpClient, string> _clientList = new Dictionary<TcpClient, string>();
-
+        private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(ServerForm));
         #endregion CONST & FIELD AREA *****************************************
 
         #region PROPERTY AREA *************************************************
@@ -98,6 +98,7 @@ namespace ChattingSystem_Server
 
         public void ServerForm_Load(object sender, EventArgs e)
         {
+            log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo("log_ErrorLog.xml"));
             try
             {
                 ServerEvent serverEvent = new ServerEvent();
@@ -105,7 +106,10 @@ namespace ChattingSystem_Server
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                logger.Info("ServerForm_Load Error: " + ex.ToString());
+            }
         }
 
         private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -127,7 +131,10 @@ namespace ChattingSystem_Server
                 if (isConnect == true)
                     ButtonStatusChange();
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                logger.Info("ServerForm_Load Error: " + ex.ToString());
+            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)
