@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoImplementProperty_usingAble_v7.0", "C:\Users\MS.Kang\source\repos\AutoImplementProperty_usingAble_v7.0\AutoImplementProperty_usingAble_v7.0.csproj", "{EA889D66-F732-4057-B3F3-B985AC58D6FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA889D66-F732-4057-B3F3-B985AC58D6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA889D66-F732-4057-B3F3-B985AC58D6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA889D66-F732-4057-B3F3-B985AC58D6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA889D66-F732-4057-B3F3-B985AC58D6FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C50FBE17-ADDE-4569-8764-98B1021EA223}
+	EndGlobalSection
+EndGlobal

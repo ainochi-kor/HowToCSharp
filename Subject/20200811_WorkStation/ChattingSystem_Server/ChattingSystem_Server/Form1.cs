@@ -221,7 +221,7 @@ namespace ChattingSystem_Server
 
                         ClientList.Add(TcpClient, channel);
 
-                        IpPoint = (IPEndPoint)_tcpClient.Client.RemoteEndPoint;
+                        IpPoint = (IPEndPoint)TcpClient.Client.RemoteEndPoint;
                         ClientIP = IpPoint.Address + ":" + IpPoint.Port;
                         ClientInfoList.Add(ClientIP.ToString());
                         SendMessageAll(ClientIP + "/ 님이 연결되었습니다.", channel, false);
@@ -261,7 +261,7 @@ namespace ChattingSystem_Server
                 DisplayText(displayMessage);
                 SendMessageAll(message, channel, true);
 
-                if (Sendmessage == channel + " 연결을 해제합니다.")
+                if (Sendmessage == " 연결을 해제합니다.")
                     ClientInfoList.Remove(ClientIP);
             }
             catch (Exception ex){ }
