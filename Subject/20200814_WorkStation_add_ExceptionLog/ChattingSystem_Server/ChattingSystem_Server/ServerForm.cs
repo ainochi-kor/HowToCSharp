@@ -30,8 +30,9 @@ namespace ChattingSystem_Server
         private static string _clientIP = null;
         private static string _sendmessage = null;
         private IPEndPoint _ipPoint;
-        private ArrayList _ClientInfoList = new ArrayList();
+        private ArrayList _clientInfoList = new ArrayList();
         private Dictionary<TcpClient, string> _clientList = new Dictionary<TcpClient, string>();
+        ServerEvent serverEvent = new ServerEvent();
 
         #endregion CONST & FIELD AREA *****************************************
 
@@ -54,7 +55,7 @@ namespace ChattingSystem_Server
             get { return _clientIP; }
             set { _clientIP = value; }
         }
-        
+
         public string Sendmessage
         {
             get { return _sendmessage; }
@@ -69,8 +70,8 @@ namespace ChattingSystem_Server
 
         public ArrayList ClientInfoList
         {
-            get { return _ClientInfoList; }
-            set { _ClientInfoList = value; }
+            get { return _clientInfoList; }
+            set { _clientInfoList = value; }
         }
 
         public Dictionary<TcpClient, string> ClientList
@@ -105,7 +106,10 @@ namespace ChattingSystem_Server
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("ServerForm_Load", ex.ToString());
+            }
         }
 
         private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -127,7 +131,10 @@ namespace ChattingSystem_Server
                 if (isConnect == true)
                     ButtonStatusChange();
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("btnStart_Click", ex.ToString());
+            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -137,12 +144,19 @@ namespace ChattingSystem_Server
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+
             try
             {
-                SendMessageAll(tbxSendData.Text, "Server", false);
+                
+                serverEvent.SendServerLog(tbxSendData.Text);
+                SendMessageAll(tbxSendData.Text, "Server");
+                DisplayText("Server >" + tbxSendData.Text);
                 tbxSendData.Text = "";
             }
-            catch (Exception ex){ }
+            catch (Exception ex) 
+            {
+                serverEvent.ErrorLog("btnStart_Click", ex.ToString());
+            }
         }
         #endregion FORM CONTROL AREA *********************************************
 
@@ -154,9 +168,12 @@ namespace ChattingSystem_Server
             {
                 IpPoint = (IPEndPoint)TcpClient.Client.RemoteEndPoint;
                 ClientIP = IpPoint.Address + ":" + IpPoint.Port + "/";
-                rtbxReceivedData.Text += IpPoint.Address + ":" + IpPoint.Port + "/" +channel + " 님이 연결되었습니다.\r\n";
+                rtbxReceivedData.Text += IpPoint.Address + ":" + IpPoint.Port + "/" + channel + " 님이 연결되었습니다.\r\n";
             }
-            catch (Exception ex){ }
+            catch (Exception ex) 
+            {
+                serverEvent.ErrorLog("GetClientIP", ex.ToString());
+            }
         }
 
         public void ButtonStatusChange()
@@ -170,11 +187,14 @@ namespace ChattingSystem_Server
                 if (btnStart.Enabled == true && ClientIP != null)
                 {
                     foreach (string clientInfo in ClientInfoList)
-                        rtbxReceivedData.Text += clientInfo + " 와의 연결이 끊어졌습니다.\r\n";
+                        DisplayText(clientInfo + " 와의 연결이 끊어졌습니다.");
                     ClientInfoList.Clear();
                 }
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("ButtonStatusChange", ex.ToString());
+            }
         }
 
         public void Disconnect()
@@ -190,7 +210,10 @@ namespace ChattingSystem_Server
                     TcpListner.Stop();
                 }
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("Disconnect", ex.ToString());
+            }
         }
 
         private void InitSocket()
@@ -221,14 +244,14 @@ namespace ChattingSystem_Server
                         string channel = Encoding.Unicode.GetString(buffer, 0, bytes);
                         channel = channel.Split('$')[0];
 
-                        this.Invoke(new DeligateGetClientIP(GetClientIP),channel);
+                        this.Invoke(new DeligateGetClientIP(GetClientIP), channel);
 
                         ClientList.Add(TcpClient, channel);
 
                         IpPoint = (IPEndPoint)TcpClient.Client.RemoteEndPoint;
                         ClientIP = IpPoint.Address + ":" + IpPoint.Port;
                         ClientInfoList.Add(ClientIP.ToString());
-                        SendMessageAll(ClientIP + "/ 님이 연결되었습니다.", channel, false);
+                        SendMessageAll(ClientIP + "/ 님이 연결되었습니다.", channel);
 
                         HandleClient handle = new HandleClient();
                         handle.OnReceived += new HandleClient.MessageDisplayHandler(OnReceived);
@@ -246,16 +269,19 @@ namespace ChattingSystem_Server
             catch (SocketException ex)
             {
                 this.Invoke(new DeligateDisconnect(Disconnect));
+                serverEvent.ErrorLog("InitSocket", ex.ToString());
             }
             catch (Exception ex)
-            { }
+            {
+                serverEvent.ErrorLog("InitSocket", ex.ToString());
+            }
             finally
             {
                 this.Invoke(new DeligateButtonChange(ButtonStatusChange));
             }
         }
 
-        private void OnReceived(string message, string channel)
+        private void OnReceived(string message, string channel, bool isClientClose)
         {
             try
             {
@@ -263,12 +289,15 @@ namespace ChattingSystem_Server
                 Sendmessage = message.Substring(message.IndexOf("/") + 1);
                 string displayMessage = ClientIP + "/" + channel + ">" + Sendmessage;
                 DisplayText(displayMessage);
-                SendMessageAll(message, channel, true);
+                SendMessageAll(message, channel);
 
-                if (Sendmessage == " 연결을 해제합니다.")
+                if (isClientClose)
                     ClientInfoList.Remove(ClientIP);
             }
-            catch (Exception ex){ }
+            catch (Exception ex) 
+            {
+                serverEvent.ErrorLog("OnReceived", ex.ToString());
+            }
         }
 
         void HandlerClientsOnDisconnected(TcpClient clientScoket)
@@ -278,12 +307,15 @@ namespace ChattingSystem_Server
                 if (ClientList.ContainsKey(clientScoket))
                     ClientList.Remove(clientScoket);
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("HandlerClientsOnDisconnected", ex.ToString());
+            }
         }
 
 
 
-        public void SendMessageAll(string message, string channel, bool flag)
+        public void SendMessageAll(string message, string channel)
         {
             try
             {
@@ -296,7 +328,7 @@ namespace ChattingSystem_Server
 
                     if (channel == pair.Value)
                     {
-                        
+
                         ClientIP = message.Split('/')[0];
                         Sendmessage = message.Substring(message.IndexOf("/") + 1);
                         buffer = Encoding.Unicode.GetBytes(ClientIP + "/" + channel + ">" + Sendmessage);
@@ -308,11 +340,14 @@ namespace ChattingSystem_Server
                         buffer = Encoding.Unicode.GetBytes(channel + ">" + message);
                         stream.Write(buffer, 0, buffer.Length);
                         stream.Flush();
-                        DisplayText(channel + ">" + message);
+
                     }
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("SendMessageAll", ex.ToString());
+            }
         }
 
         private void DisplayText(string text)
@@ -329,7 +364,10 @@ namespace ChattingSystem_Server
                 else
                     rtbxReceivedData.AppendText(text + Environment.NewLine);
             }
-            catch (Exception ex){ }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("DisplayText", ex.ToString());
+            }
         }
         #endregion METHOD AREA ************************************************
     }

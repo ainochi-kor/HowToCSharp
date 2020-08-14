@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+using log4net;
+using log4net.Config;
 
 namespace ChattingSystem_Server
 {
@@ -16,6 +19,7 @@ namespace ChattingSystem_Server
         TcpClient _tcpSocket = null;
         Thread _threadHandler = null;
         private Dictionary<TcpClient, string> _clientList = null;
+        ServerEvent serverEvent = new ServerEvent();
 
         #endregion CONST & FIELD AREA ********************************************
 
@@ -42,7 +46,7 @@ namespace ChattingSystem_Server
         #endregion PROPERTY AREA *************************************************
 
         #region DELEGATE & EVENT AREA *****************************************
-        
+
         public delegate void MessageDisplayHandler(string message, string channel, bool isClientClose);
         public event MessageDisplayHandler OnReceived;
 
@@ -64,7 +68,10 @@ namespace ChattingSystem_Server
                 ThreadHandler.IsBackground = true;
                 ThreadHandler.Start();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                serverEvent.ErrorLog("StartClient", ex.ToString());
+            }
             
         }
 
@@ -82,32 +89,33 @@ namespace ChattingSystem_Server
                     stream = TcpSocket.GetStream();
                     bytes = stream.Read(buffer, 0, buffer.Length);
                     message = Encoding.Unicode.GetString(buffer, 0, bytes);
-
+                    serverEvent.ReceiveServerLog(message); //받은 메시지 원문 기록
                     if (OnReceived != null)
                     {
                         if (message.Substring(message.LastIndexOf("$") + 1) == "@")
                             OnReceived(message.Substring(0, message.LastIndexOf("$")), ClientList[TcpSocket].ToString(), true);
                         else
-                            OnReceived(message.Substring(0, message.LastIndexOf("$")), ClientList[TcpSocket].ToString(), false);     
+                            OnReceived(message.Substring(0, message.LastIndexOf("$")), ClientList[TcpSocket].ToString(), false);
                     }
-                                       
                 }
             }
             catch (Exception ex)
             {
+                serverEvent.ErrorLog("DoChat", ex.ToString());
                 if (TcpSocket != null)
                 {
-                    if (OnDisconnected != null)
-                        OnDisconnected(TcpSocket);
+                    IPEndPoint clientInfo = (IPEndPoint)TcpSocket.Client.RemoteEndPoint;
+                    OnReceived(clientInfo.Address + ":" + clientInfo.Port + "/" + " 연결을 해제합니다.", ClientList[TcpSocket].ToString(), true);
 
+                    TcpSocket.Close();
+                    stream.Close();
                     if (ThreadHandler.IsAlive == true)
                     {
                         ThreadHandler.Interrupt();
                         ThreadHandler.Abort();
                     }
-
-                    TcpSocket.Close();
-                    stream.Close();
+                    if (OnDisconnected != null)
+                        OnDisconnected(TcpSocket);
                 }
             }
         }
