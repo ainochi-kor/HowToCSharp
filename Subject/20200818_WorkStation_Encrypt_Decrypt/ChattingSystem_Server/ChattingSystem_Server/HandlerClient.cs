@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading;
 using log4net;
 using log4net.Config;
+using System.Windows.Forms;
 
 namespace ChattingSystem_Server
 {
@@ -80,23 +81,58 @@ namespace ChattingSystem_Server
             NetworkStream stream = null;
             try
             {
-                byte[] buffer = new byte[1024];
+                //byte[] buffer = new byte[1024];
                 string message = string.Empty;
                 int bytes = 0;
 
                 while (true)
                 {
-                    stream = TcpSocket.GetStream();
-                    bytes = stream.Read(buffer, 0, buffer.Length);
-                    message = Encoding.Unicode.GetString(buffer, 0, bytes);
+                    byte[] sizeBuf = new byte[4];
+
+                    stream = TcpSocket.GetStream();//acc.Receive(sizeBuf, 0, sizeBuf.Length, 0);
+
+                    int size = BitConverter.ToInt32(sizeBuf, 0);
+
+                    //bytes = stream.Read(stream, 0, stream.Length);
+
+                    
+                    MemoryStream ms = new MemoryStream();
+
+                     while (size > 0)
+                    {
+                        //MessageBox.Show(TcpSocket.ReceiveBufferSize.ToString());
+                        byte[] buffer;
+                        if (size < TcpSocket.ReceiveBufferSize)//acc.ReceiveBufferSize)
+                            buffer = new byte[size];
+                        else
+                            buffer = new byte[TcpSocket.ReceiveBufferSize];
+
+                        int rec = stream.Read(buffer, 0, buffer.Length);
+ 
+                        size -= rec;
+ 
+                        ms.Write(buffer, 0, buffer.Length);
+                    }
+ 
+                    ms.Close();
+ 
+                    byte[] data = ms.ToArray();
+ 
+                    ms.Dispose();
+
+
+                    message = Encoding.UTF8.GetString(data);
                     serverEvent.ReceiveServerLog(message); //받은 메시지 원문 기록
+                    OnReceived(message, ClientList[TcpSocket].ToString(), false);
+                    /*
                     if (OnReceived != null)
                     {
                         if (message.Substring(message.LastIndexOf("$") + 1) == "@")
                             OnReceived(message.Substring(0, message.LastIndexOf("$")), ClientList[TcpSocket].ToString(), true);
                         else
-                            OnReceived(message.Substring(0, message.LastIndexOf("$")), ClientList[TcpSocket].ToString(), false);
+                            ;
                     }
+                     * */
                 }
             }
             catch (Exception ex)

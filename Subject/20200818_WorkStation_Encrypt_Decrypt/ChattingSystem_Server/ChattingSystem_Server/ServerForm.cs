@@ -246,10 +246,47 @@ namespace ChattingSystem_Server
                         TcpClient = TcpListner.AcceptTcpClient();
 
                         NetworkStream stream = TcpClient.GetStream();
+                        /*
                         byte[] buffer = new byte[1024];
                         int bytes = stream.Read(buffer, 0, buffer.Length);
                         string channel = Encoding.Unicode.GetString(buffer, 0, bytes);
                         channel = channel.Split('$')[0];
+                        */
+                        //bytes = stream.Read(stream, 0, stream.Length);
+
+                        byte[] sizeBuf = new byte[4];
+                        stream = TcpClient.GetStream();//acc.Receive(sizeBuf, 0, sizeBuf.Length, 0);
+                        //sizeBuf = 
+                        int size = stream.Read(sizeBuf, 0 , sizeBuf.Length);
+                        MessageBox.Show(TcpClient.ReceiveBufferSize.ToString());
+                        MemoryStream ms = new MemoryStream();
+
+                        while (size > 0)
+                        {
+                            
+                            byte[] buffer;
+                            if (size < TcpClient.ReceiveBufferSize) //acc.ReceiveBufferSize)
+                                buffer = new byte[size];
+                            else
+                                buffer = new byte[TcpClient.ReceiveBufferSize];
+
+                            int rec = stream.Read(buffer, 0, buffer.Length);
+
+                            size -= rec;
+
+                            ms.Write(buffer, 0, buffer.Length);
+                        }
+
+                        ms.Close();
+
+                        byte[] data = ms.ToArray();
+
+                        ms.Dispose();
+
+                        string channel = Encoding.UTF8.GetString(data);
+                        channel = channel.Split('$')[0];
+                        
+
 
                         this.Invoke(new DeligateGetClientIP(GetClientIP), channel);
 
