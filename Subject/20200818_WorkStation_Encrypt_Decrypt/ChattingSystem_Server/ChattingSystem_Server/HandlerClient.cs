@@ -13,12 +13,13 @@ using System.Windows.Forms;
 
 namespace ChattingSystem_Server
 {
-    class HandleClient
+    class HandleClient : ServerForm
     {
         #region CONST & FIELD AREA ********************************************
 
         TcpClient _tcpSocket = null;
         Thread _threadHandler = null;
+        IPEndPoint _ipEndPoint = null;//(IPEndPoint)TcpSocket.Client.RemoteEndPoint;
         private Dictionary<TcpClient, string> _clientList = null;
         ServerEvent serverEvent = new ServerEvent();
 
@@ -44,6 +45,12 @@ namespace ChattingSystem_Server
             set { _clientList = value; }
         }
 
+        public IPEndPoint IpEndPoint
+        {
+            get { return _ipEndPoint; }
+            set { _ipEndPoint = value; }
+        }
+
         #endregion PROPERTY AREA *************************************************
 
         #region DELEGATE & EVENT AREA *****************************************
@@ -64,6 +71,7 @@ namespace ChattingSystem_Server
             {
                 TcpSocket = clientSocket;
                 this.ClientList = clientList;
+                IpEndPoint = (IPEndPoint)TcpSocket.Client.RemoteEndPoint;
 
                 ThreadHandler = new Thread(DoChat);
                 ThreadHandler.IsBackground = true;
@@ -81,47 +89,40 @@ namespace ChattingSystem_Server
             NetworkStream stream = null;
             try
             {
-                //byte[] buffer = new byte[1024];
                 string message = string.Empty;
-                int bytes = 0;
 
                 while (true)
                 {
-                    byte[] sizeBuf = new byte[4];
+                    stream = TcpSocket.GetStream();
 
-                    stream = TcpSocket.GetStream();//acc.Receive(sizeBuf, 0, sizeBuf.Length, 0);
-
+                    byte[] sizeBuf = new byte[TcpSocket.ReceiveBufferSize];
+                    stream.Read(sizeBuf, 0, (int)TcpSocket.ReceiveBufferSize);
                     int size = BitConverter.ToInt32(sizeBuf, 0);
 
-                    //bytes = stream.Read(stream, 0, stream.Length);
-
-                    
                     MemoryStream ms = new MemoryStream();
 
-                     while (size > 0)
+
+                    while (size > 0)
                     {
-                        //MessageBox.Show(TcpSocket.ReceiveBufferSize.ToString());
                         byte[] buffer;
-                        if (size < TcpSocket.ReceiveBufferSize)//acc.ReceiveBufferSize)
+                        if (size < TcpSocket.ReceiveBufferSize) 
                             buffer = new byte[size];
                         else
                             buffer = new byte[TcpSocket.ReceiveBufferSize];
 
                         int rec = stream.Read(buffer, 0, buffer.Length);
- 
+
                         size -= rec;
- 
                         ms.Write(buffer, 0, buffer.Length);
                     }
- 
                     ms.Close();
- 
+
                     byte[] data = ms.ToArray();
- 
+
                     ms.Dispose();
 
-
                     message = Encoding.UTF8.GetString(data);
+                    //MessageBox.Show(message);
                     serverEvent.ReceiveServerLog(message); //받은 메시지 원문 기록
                     OnReceived(message, ClientList[TcpSocket].ToString(), false);
                     /*
@@ -140,6 +141,16 @@ namespace ChattingSystem_Server
                 serverEvent.ErrorLog("DoChat", ex.Message);
                 if (TcpSocket != null)
                 {
+                    /*
+                    ServerSecurity Encrypted = new ServerSecurity();
+
+                    
+                    string Encrypted = Encrypt.EncryptedMessage(IpEndPoint.Address + ":" + IpEndPoint.Port + "/" + " 연결이 종료되었습니다."
+                        , serverEvent.LocalIPAddress() + ":" + PortNum() + "/" + ClientList[TcpSocket].ToString());
+                    MessageBox.Show(Encrypted);
+                    
+                    OnReceived(Encrypted, ClientList[TcpSocket].ToString(), true);
+                     * */
                     TcpSocket.Close();
                     stream.Close();
                     if (ThreadHandler.IsAlive == true)

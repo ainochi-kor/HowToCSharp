@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurityClient.cs" />
     <EmbeddedResource Include="ChattingSystme_Client.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>

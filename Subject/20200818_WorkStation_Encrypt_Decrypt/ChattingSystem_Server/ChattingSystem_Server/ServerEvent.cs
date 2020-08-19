@@ -22,8 +22,10 @@ namespace ChattingSystem_Server
             IPHostEntry host;
             string LocalIP = "";
             host = Dns.GetHostEntry(Dns.GetHostName());
+            
             foreach (IPAddress ip in host.AddressList)
             {
+                
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
                     LocalIP = ip.ToString();

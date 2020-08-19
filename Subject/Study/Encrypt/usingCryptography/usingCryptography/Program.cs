@@ -34,7 +34,7 @@ namespace usingCryptography
                 StreamWriter sWriter = new StreamWriter(cryptStream);
 
                 // 스트림을 이용하여 쓰기
-                sWriter.WriteLine("른자 최고");
+                sWriter.WriteLine("Hello World");
 
                 // 모든 연결을 닫아라.
                 sWriter.Close();

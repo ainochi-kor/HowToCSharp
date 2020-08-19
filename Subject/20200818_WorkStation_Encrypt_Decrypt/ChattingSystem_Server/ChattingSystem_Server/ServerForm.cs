@@ -32,7 +32,8 @@ namespace ChattingSystem_Server
         private IPEndPoint _ipPoint;
         private ArrayList _clientInfoList = new ArrayList();
         private Dictionary<TcpClient, string> _clientList = new Dictionary<TcpClient, string>();
-        ServerEvent serverEvent = new ServerEvent();
+        ServerEvent _serverEvent = new ServerEvent();
+        ServerSecurity _encrypted = new ServerSecurity();
 
         #endregion CONST & FIELD AREA *****************************************
 
@@ -80,6 +81,23 @@ namespace ChattingSystem_Server
             set { _clientList = value; }
         }
 
+        public string PortNum()
+        {
+            return tbxPort.Text;
+        }
+
+        public ServerEvent ServerEvent
+        {
+            get { return _serverEvent; }
+            set { _serverEvent = value; }
+        }
+
+        internal ServerSecurity Encrypted
+        {
+            get { return _encrypted; }
+            set { _encrypted = value; }
+        }
+
         #endregion PROPERTY AREA **********************************************
 
         #region DELEGATE AREA *************************************************
@@ -115,7 +133,7 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("ServerForm_Load", ex.Message);
+                ServerEvent.ErrorLog("ServerForm_Load", ex.Message);
             }
         }
 
@@ -140,7 +158,7 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("btnStart_Click", ex.Message);
+                ServerEvent.ErrorLog("btnStart_Click", ex.Message);
             }
         }
 
@@ -151,18 +169,17 @@ namespace ChattingSystem_Server
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-
             try
             {
-                
-                serverEvent.SendServerLog(tbxSendData.Text);
-                SendMessageAll("Server/"+tbxSendData.Text, cbxChannel.Text);
+
+                ServerEvent.SendServerLog(tbxSendData.Text);
+                SendMessageAll("Server/"+tbxSendData.Text, cbxChannel.Text, true);
                 DisplayText("Server /"+ cbxChannel.Text + ">" + tbxSendData.Text);
                 tbxSendData.Text = "";
             }
             catch (Exception ex) 
             {
-                serverEvent.ErrorLog("btnStart_Click", ex.Message);
+                ServerEvent.ErrorLog("btnStart_Click", ex.Message);
             }
         }
         #endregion FORM CONTROL AREA *********************************************
@@ -179,7 +196,7 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex) 
             {
-                serverEvent.ErrorLog("GetClientIP", ex.Message);
+                ServerEvent.ErrorLog("GetClientIP", ex.Message);
             }
         }
 
@@ -200,7 +217,7 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("ButtonStatusChange", ex.Message);
+                ServerEvent.ErrorLog("ButtonStatusChange", ex.Message);
             }
         }
 
@@ -219,7 +236,7 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("Disconnect", ex.Message);
+                ServerEvent.ErrorLog("Disconnect", ex.Message);
             }
         }
 
@@ -246,19 +263,13 @@ namespace ChattingSystem_Server
                         TcpClient = TcpListner.AcceptTcpClient();
 
                         NetworkStream stream = TcpClient.GetStream();
-                        /*
-                        byte[] buffer = new byte[1024];
-                        int bytes = stream.Read(buffer, 0, buffer.Length);
-                        string channel = Encoding.Unicode.GetString(buffer, 0, bytes);
-                        channel = channel.Split('$')[0];
-                        */
-                        //bytes = stream.Read(stream, 0, stream.Length);
-
-                        byte[] sizeBuf = new byte[4];
+                        
                         stream = TcpClient.GetStream();//acc.Receive(sizeBuf, 0, sizeBuf.Length, 0);
-                        //sizeBuf = 
-                        int size = stream.Read(sizeBuf, 0 , sizeBuf.Length);
-                        MessageBox.Show(TcpClient.ReceiveBufferSize.ToString());
+
+                        byte[] sizeBuf = new byte[TcpClient.ReceiveBufferSize];
+                        stream.Read(sizeBuf, 0, (int)TcpClient.ReceiveBufferSize);
+                        int size = BitConverter.ToInt32(sizeBuf, 0);
+                        
                         MemoryStream ms = new MemoryStream();
 
                         while (size > 0)
@@ -269,14 +280,12 @@ namespace ChattingSystem_Server
                                 buffer = new byte[size];
                             else
                                 buffer = new byte[TcpClient.ReceiveBufferSize];
-
+                            
                             int rec = stream.Read(buffer, 0, buffer.Length);
 
                             size -= rec;
-
                             ms.Write(buffer, 0, buffer.Length);
                         }
-
                         ms.Close();
 
                         byte[] data = ms.ToArray();
@@ -284,9 +293,7 @@ namespace ChattingSystem_Server
                         ms.Dispose();
 
                         string channel = Encoding.UTF8.GetString(data);
-                        channel = channel.Split('$')[0];
                         
-
 
                         this.Invoke(new DeligateGetClientIP(GetClientIP), channel);
 
@@ -295,7 +302,8 @@ namespace ChattingSystem_Server
                         IpPoint = (IPEndPoint)TcpClient.Client.RemoteEndPoint;
                         ClientIP = IpPoint.Address + ":" + IpPoint.Port;
                         ClientInfoList.Add(ClientIP.ToString());
-                        SendMessageAll(ClientIP + "/ 님이 연결되었습니다.", channel);
+                        
+                        SendMessageAll(ClientIP + "/ 님이 연결되었습니다.", channel, true);
 
                         HandleClient handle = new HandleClient();
                         handle.OnReceived += new HandleClient.MessageDisplayHandler(OnReceived);
@@ -313,11 +321,11 @@ namespace ChattingSystem_Server
             catch (SocketException ex)
             {
                 this.Invoke(new DeligateDisconnect(Disconnect));
-                serverEvent.ErrorLog("InitSocket", ex.Message);
+                ServerEvent.ErrorLog("InitSocket", ex.Message);
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("InitSocket", ex.Message);
+                ServerEvent.ErrorLog("InitSocket", ex.Message);
             }
             finally
             {
@@ -333,14 +341,14 @@ namespace ChattingSystem_Server
                 Sendmessage = message.Substring(message.IndexOf("/") + 1);
                 string displayMessage = ClientIP + "/" + channel + ">" + Sendmessage;
                 DisplayText(displayMessage);
-                SendMessageAll(message, channel);
+                SendMessageAll(message, channel, false);
 
                 if (isClientClose)
                     ClientInfoList.Remove(ClientIP);
             }
             catch (Exception ex) 
             {
-                serverEvent.ErrorLog("OnReceived", ex.Message);
+                ServerEvent.ErrorLog("OnReceived", ex.Message);
             }
         }
 
@@ -353,13 +361,13 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("HandlerClientsOnDisconnected", ex.Message);
+                ServerEvent.ErrorLog("HandlerClientsOnDisconnected", ex.Message);
             }
         }
 
 
 
-        public void SendMessageAll(string message, string channel)
+        public void SendMessageAll(string message, string channel, bool isServer)
         {
             try
             {
@@ -370,28 +378,48 @@ namespace ChattingSystem_Server
                     NetworkStream stream = client.GetStream();
                     byte[] buffer = null;
 
-                    if (channel == pair.Value)
+                    if(isServer)
                     {
-                        ClientIP = message.Split('/')[0];
-                        Sendmessage = message.Substring(message.IndexOf("/") + 1);
-                        buffer = Encoding.Unicode.GetBytes(ClientIP + "/" + channel + ">" + Sendmessage);
-                        stream.Write(buffer, 0, buffer.Length);
-                        stream.Flush();
+                        if (channel == pair.Value)
+                        {
+                            message = Encrypted.EncryptedMessage(message, IpPoint.Address.ToString());
+                            buffer = Encoding.Unicode.GetBytes("@"+message);
+                            stream.Write(buffer, 0, buffer.Length);
+                            stream.Flush();
+                        }
+                        else if (channel == "All")
+                        {
+                            ClientIP = message.Split('/')[0];
+                            Sendmessage = message.Substring(message.IndexOf("/") + 1);
+                            buffer = Encoding.Unicode.GetBytes(ClientIP + "/" + channel + ">" + Sendmessage);
+                            stream.Write(buffer, 0, buffer.Length);
+                            stream.Flush();
+                        }
                     }
-                    else if (channel == "All")
+                    else
                     {
-                        ClientIP = message.Split('/')[0];
-                        Sendmessage = message.Substring(message.IndexOf("/") + 1);
-                        buffer = Encoding.Unicode.GetBytes(ClientIP + "/" + channel + ">" + Sendmessage);
-                        stream.Write(buffer, 0, buffer.Length);
-                        stream.Flush();
-
+                        if (channel == pair.Value)
+                        {
+                            //ClientIP = message.Split('/')[0];
+                            //Sendmessage = message.Substring(message.IndexOf("/") + 1);
+                            buffer = Encoding.Unicode.GetBytes(message);
+                            stream.Write(buffer, 0, buffer.Length);
+                            stream.Flush();
+                        }
+                        else if (channel == "All")
+                        {
+                            ClientIP = message.Split('/')[0];
+                            Sendmessage = message.Substring(message.IndexOf("/") + 1);
+                            buffer = Encoding.Unicode.GetBytes(ClientIP + "/" + channel + ">" + Sendmessage);
+                            stream.Write(buffer, 0, buffer.Length);
+                            stream.Flush();
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("SendMessageAll", ex.Message);
+                ServerEvent.ErrorLog("SendMessageAll", ex.Message);
             }
         }
 
@@ -411,7 +439,7 @@ namespace ChattingSystem_Server
             }
             catch (Exception ex)
             {
-                serverEvent.ErrorLog("DisplayText", ex.Message);
+                ServerEvent.ErrorLog("DisplayText", ex.Message);
             }
         }
         #endregion METHOD AREA ************************************************

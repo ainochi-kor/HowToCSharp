@@ -25,8 +25,9 @@ namespace ChattingSystem_Client
         private string _clientIP = "";
         private string _clientPort = "";
         private bool _isReceivedInfo = false;
+        SecurityClient _securityClient = new SecurityClient();
 
-        #endregion CONST & FIELD AREA ********************************************
+        #endregion CONST & FIELD AREA *****************************************
         
         #region PROPERTY AREA *************************************************
 
@@ -69,6 +70,7 @@ namespace ChattingSystem_Client
 
         delegate void DelegateButtonChange();
         delegate void DelegateDisconnect();
+        delegate void DelegateSecurity(string message);
 
         #endregion DELEGATE AREA **********************************************
 
@@ -128,6 +130,8 @@ namespace ChattingSystem_Client
 
                 Stream.Write(BitConverter.GetBytes(data.Length), 0, 4);
                 Stream.Flush();
+
+                //Thread.Sleep(1000);
                 
                 Stream.Write(data, 0, data.Length);
                 Stream.Flush();
@@ -135,7 +139,7 @@ namespace ChattingSystem_Client
                 Thread threadHander = new Thread(GetMessage);
                 threadHander.IsBackground = true;
                 threadHander.Start();
-                
+                //MessageBox.Show("다보냄");
             }
             catch (SocketException se)
             {
@@ -151,17 +155,17 @@ namespace ChattingSystem_Client
         {
             try
             {
-                byte[] data = Encoding.UTF8.GetBytes(tbxSendData.Text);
 
-                Stream.Write(BitConverter.GetBytes(data.Length), 0, 4);
+                string encryptedMessage = _securityClient.EncryptedMessage(tbxLocalIpAddress.Text + ":" + tbxPort.Text + "/" + cbxChannel.Text,
+                    ClientIP + ":" + ClientPort + "/" + this.tbxSendData.Text);
+
+                byte[] message = Encoding.UTF8.GetBytes(encryptedMessage);
+
+                Stream.Write(BitConverter.GetBytes(message.Length), 0, 4);
                 Stream.Flush();
-                Stream.Write(data,0, data.Length);
+
+                Stream.Write(message, 0, message.Length);
                 Stream.Flush();
-                /*
-                byte[] buffer = Encoding.Unicode.GetBytes(ClientIP + ":" + ClientPort + "/" + this.tbxSendData.Text + "$");
-                Stream.Write(buffer, 0, buffer.Length);
-                Stream.Flush();
-                */
                 tbxSendData.Text = "";
             }
             catch (Exception ex)
@@ -206,17 +210,30 @@ namespace ChattingSystem_Client
                     byte[] buffer = new byte[bufferSize];
                     int bytes = Stream.Read(buffer, 0, buffer.Length);
                     string message = Encoding.Unicode.GetString(buffer, 0, bytes);
-                    if (!IsReceivedInfo)
+                    
+                    if (message.IndexOf('@') == 0)
                     {
-                        ClientIP = message.Split(':')[0];
-                        ClientPort = message.Split(':')[1].Split('/')[0];
-                        IsReceivedInfo = !IsReceivedInfo;
+                        MessageBox.Show(message.Substring(1));
+                        message = _securityClient.DecryptedMessage(message.Substring(1), LocalIPAddress());
+                        MessageBox.Show(message);
+                        if (!IsReceivedInfo)
+                        {
+                            ClientIP = message.Split(':')[0];
+                            ClientPort = message.Split(':')[1].Split('/')[0];
+                            IsReceivedInfo = !IsReceivedInfo;
+                            DisplayText(message);
+                        }
                     }
+                    else
+                    {
+                        this.Invoke(new DelegateSecurity(DecryptedMessage), message);
+                    }
+                        
                     if(message == "")
                     {
                         ClientSocket.Close();
                     }
-                    DisplayText(message);
+                    
                 }
             }
             catch (Exception ex)
@@ -230,12 +247,24 @@ namespace ChattingSystem_Client
                 {
                     MessageBox.Show(e.ToString());
                 }
+                MessageBox.Show(ex.ToString());
                 IsReceivedInfo = false;
             }
         }
 
+        private void DecryptedMessage(string message)
+        {
+            message = _securityClient.DecryptedMessage(tbxLocalIpAddress.Text + ":" + tbxPort.Text + "/" + cbxChannel.Text, message);
+            DisplayText(message);
+        }
+
         private void DisconnectSocket()
         {
+            ClientSocket.Close();
+            /*
+             * 생각해야하는 부분.
+            byte[] data = Encoding.Unicode.GetBytes(ClientIP + ":" + ClientPort + "/" + " 연결을 해제합니다." + "$@");
+            
             try
             {
                 byte[] buffer = Encoding.Unicode.GetBytes(ClientIP + ":" + ClientPort + "/" + " 연결을 해제합니다." + "$@");
@@ -247,6 +276,7 @@ namespace ChattingSystem_Client
             {
                 MessageBox.Show(ex.ToString());
             }
+          * */
         }
 
         private void DisplayText(string text)
@@ -270,6 +300,24 @@ namespace ChattingSystem_Client
             }
         }
 
+
+        public string LocalIPAddress()
+        {
+            IPHostEntry host;
+            string LocalIP = "";
+            host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (IPAddress ip in host.AddressList)
+            {
+
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    LocalIP = ip.ToString();
+                    break;
+                }
+            }
+            return LocalIP;
+        }
         #endregion METHOD AREA ************************************************
     }
 }
