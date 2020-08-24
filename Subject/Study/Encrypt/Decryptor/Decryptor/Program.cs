@@ -27,7 +27,7 @@ namespace Decryptor
                 //Create a new instance of the default Aes implementation class
                 //기본 Aes 구현 클래스의 새 인스턴스 생성
                 Aes aes = Aes.Create();
-                //aes.Padding = PaddingMode.None;
+                aes.Padding = PaddingMode.None;
 
                 //Create a CryptoStream, pass it the file stream, and decrypt it with the Aes class using the key and IV.
                 //CryptoStream을 생성하여 파일 스트림을 전달하고 키와 IV를 사용하여 Aes 클래스로 암호를 해독하십시오.
